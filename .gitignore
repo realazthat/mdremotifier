@@ -1,0 +1,14 @@
+.venv
+.vscode
+__pycache__
+.deleteme
+.cache
+NOTES.md
+.logs/
+build/
+mdremotifier.egg-info/
+.deleteme
+**/.deleteme*
+.act-project-path/
+dist/
+.ruff_cache/
