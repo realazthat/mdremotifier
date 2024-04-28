@@ -31,10 +31,8 @@ find "${TMP_PROJ_PATH}" -type f -not -path '*/.*' -exec chmod 777 {} +
 # Install mdremotifier and run smoke test
 cd "${TMP_DIR}"
 cp "${PROJ_PATH}/.python-version" .
-pip install virtualenv
-python -m virtualenv .venv
-pip install --upgrade pip
 VENV_PATH="${TMP_DIR}/.venv" source "${PROJ_PATH}/scripts/utilities/ensure-venv.sh"
+pip install --upgrade pip
 
 EXIT_CODE=0
 python -m mdremotifier.cli --help || EXIT_CODE=$?

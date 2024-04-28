@@ -45,20 +45,16 @@ jobs:
         echo "${{ matrix.python-version.file }}"
         echo "${{ matrix.python-version.file }}" > .python-version
         cat .python-version
-    - name: Install Bash (Ubuntu)
-      # * bash: scripts.
-      # * xxd: tests.
-      # * git: scripts, tests.
-      # * xxhash: changeguard.
-      # * rsync: out-of-directory test.
-      # * grep: tests.
-      # * expect: for `unbuffer`, useful to grab and compare ansi color symbols.
-      # * jq: dependency for [yq](https://github.com/kislyuk/yq), which is used
-      #   to generate the README.
-      # * rsync: tests.
+    - name: Get Dependencies
       run: |
-        sudo apt-get update && sudo apt-get install -y bash grep xxd git \
-          xxhash rsync expect jq
+        sudo apt-get update && sudo apt-get install -y jq
+        pip install yq
+        APT_DEPS=$(python -m yq -r -c '.dev | keys | join(" ")' .github/dependencies.yml)
+        echo "APT_DEPS=${APT_DEPS}" >> $GITHUB_ENV
+    - name: Install Dependencies (Ubuntu)
+      run: |
+        # See project/.github/dependencies.yml for a list of dependencies.
+        sudo apt-get update && sudo apt-get install -y ${APT_DEPS}
     - name: Run everything
       run: |
         bash scripts/pre.sh

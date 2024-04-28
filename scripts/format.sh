@@ -18,15 +18,16 @@ find ./mdremotifier/examples -type f -name "*.md" ! -path '*.remotified.md' -pri
 done
 
 bash scripts/utilities/prettier.sh --parser markdown "${PWD}/README.md.jinja2" --write
+bash scripts/utilities/prettier.sh --parser markdown "${PWD}/LICENSE.md" --write
 
-yapf -r ./mdremotifier -i
-yapf -r ./scripts -i
+python -m yapf -r ./mdremotifier -i
+python -m yapf -r ./scripts -i
 if toml-sort "${PROJ_PATH}/pyproject.toml" --check; then
   :
 else
   toml-sort --in-place "${PROJ_PATH}/pyproject.toml"
 fi
-autoflake --remove-all-unused-imports --in-place --recursive ./mdremotifier
+python -m autoflake --remove-all-unused-imports --in-place --recursive ./mdremotifier
 isort ./mdremotifier
 
 # vulture ./mdremotifier

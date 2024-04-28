@@ -1,6 +1,5 @@
 import sys
 
-
 if sys.version_info >= (3, 8):
   from importlib.metadata import PackageNotFoundError
   from importlib.metadata import version as importlib_version

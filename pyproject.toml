@@ -23,6 +23,7 @@ dependencies = [
   "types-beautifulsoup4",
   "bs4==0.0.2",
   "colorama >=0.4,<1",
+  'importlib-metadata; python_version < "3.8"',
   "mistletoe >=1,<2",
   "rich >=13,<14",
   "rich-argparse >=1,<2",
@@ -76,6 +77,8 @@ dev = [
   "distlib==0.3.8",
   "filelock==3.13.4",
   "identify==2.5.36",
+  "isort==5.13.2",
+  "importlib-metadata==7.1.0",
   "jinja2==3.1.3",
   "markdown-it-py==3.0.0",
   "markupsafe==2.1.5",
@@ -107,7 +110,9 @@ dev = [
   "typing-extensions==4.10.0",
   "virtualenv==20.26.0",
   "xmltodict==0.13.0",
-  "yq==3.2.3"
+  "yapf==0.40.2",
+  "yq==3.2.3",
+  "zipp==3.18.1"
 ]
 
 [project.scripts]

@@ -9,30 +9,24 @@ README.md: Change local {links,images} to remote.
 """
 import argparse
 import logging
+import sys
+import warnings
 from pathlib import Path
 from shutil import get_terminal_size
-import sys
 from typing import Dict, List, Optional
-from urllib.parse import ParseResult
-from urllib.parse import urlparse
-import warnings
+from urllib.parse import ParseResult, urljoin, urlparse
 
-from bs4 import BeautifulSoup
 import colorama
 import mistletoe
-from mistletoe.markdown_renderer import LinkReferenceDefinition
-from mistletoe.markdown_renderer import MarkdownRenderer
-from mistletoe.span_token import HtmlSpan
-from mistletoe.span_token import Image
-from mistletoe.span_token import InlineCode
-from mistletoe.span_token import Link
-from mistletoe.span_token import SpanToken
+from bs4 import BeautifulSoup
+from mistletoe.markdown_renderer import (LinkReferenceDefinition,
+                                         MarkdownRenderer)
+from mistletoe.span_token import HtmlSpan, Image, InlineCode, Link, SpanToken
 from mistletoe.token import Token
 from rich.console import Console
 from rich_argparse import RichHelpFormatter
 
 from . import _build_version
-
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +45,7 @@ def _GetProgramName() -> str:
 
 
 class _CustomRichHelpFormatter(RichHelpFormatter):
+
   def __init__(self, *args, **kwargs):
     if kwargs.get('width') is None:
       width, _ = get_terminal_size()
@@ -92,18 +87,31 @@ def _DumpOutput(args: argparse.Namespace, output: str):
 
 
 class _Updater:
-  def __init__(self, url_prefix: str, all_references: bool) -> None:
+
+  def __init__(self, url_prefix: str, all_references: bool,
+               console: Console) -> None:
     self._url_prefix = url_prefix
     self._all_references = all_references
+    self._console = console
     self._label2token: Dict[str, Token] = {}
+
+  def _ShouldReplaceURL(self, url: str) -> bool:
+    url_pr: ParseResult = urlparse(url)
+    if url_pr.scheme != '':
+      return False
+    if url_pr.path == '':
+      return False
+    return True
 
   def _ReplaceURL(self, url: str) -> str:
     """Replace the URL with a raw.githubusercontent.com URL if it is a relative
       path to a file in the repository."""
-    url_pr: ParseResult = urlparse(url)
-    if url_pr.scheme == '':
-      return f'{self._url_prefix}{url_pr.path.lstrip("/")}'
-    return url_pr.geturl()
+    if self._ShouldReplaceURL(url):
+      # new_url = f'{self._url_prefix}{url_pr.path.lstrip("/")}'
+      new_url = urljoin(self._url_prefix, url)
+      self._console.print(f'{url} -> {new_url}')
+      return new_url
+    return url
 
   def _UpdateText(self, token: SpanToken):
     """Update the text contents of a span token and its children.
@@ -175,20 +183,20 @@ def main():
                    dest='input',
                    type=str,
                    required=True,
-                   help='Input markdown file, - for stdin.')
+                   help='Input markdown file, use "-" for stdin.')
     p.add_argument('-o',
                    '--output',
                    dest='output',
                    type=str,
                    required=True,
-                   help='Output markdown file, - for stdout.')
+                   help='Output markdown file, use "-" for stdout.')
     p.add_argument(
         '--url-prefix',
         type=str,
         required=True,
         help='URL prefix to replace the local URLs with.'
         ' Should probably end in a slash.'
-        ' Example: "https://raw.githubusercontent.com/realazthat/mdremotifier/master/"'
+        ' Example: "https://raw.githubusercontent.com/realazthat/mdremotifier/master/".'
     )
     p.add_argument(
         '--all-references',
@@ -207,7 +215,8 @@ def main():
     with MarkdownRenderer() as renderer:
       doc = mistletoe.Document(_GetInput(args))
       updater = _Updater(url_prefix=args.url_prefix,
-                         all_references=args.all_references)
+                         all_references=args.all_references,
+                         console=console)
       updater.Update(doc)
       # Two passes, in case the linked reference came first.
       updater.Update(doc)

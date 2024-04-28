@@ -41,6 +41,7 @@ find "${TMP_DIR}" -type f -not -path '*/.*' -exec chmod 777 {} +
 cd "${TMP_DIR}"
 cp "${PROJ_PATH}/.python-version" .
 VENV_PATH="${TMP_DIR}/.venv" source "${PROJ_PATH}/scripts/utilities/ensure-venv.sh"
+pip install --upgrade pip
 
 EXIT_CODE=0
 python -m mdremotifier.cli --help || EXIT_CODE=$?
