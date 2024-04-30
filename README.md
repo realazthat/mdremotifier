@@ -112,7 +112,7 @@ the local images in your README when displayed on their sites.
 pip install mdremotifier
 
 # Install from git (https://github.com/realazthat/mdremotifier)
-pip install git+https://github.com/realazthat/mdremotifier.git@v0.1.0
+pip install git+https://github.com/realazthat/mdremotifier.git@v0.2.0
 ```
 
 ## 🚜 Usage
@@ -292,7 +292,7 @@ These instructions are for maintainers of the project.
   https://img.shields.io/pypi/v/mdremotifier?style=plastic&color=0A1E1E
 [5]: https://pypi.org/project/mdremotifier/
 [6]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.1.0/master?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/master?style=plastic
 [7]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/master?style=plastic
 [8]:
@@ -300,19 +300,19 @@ These instructions are for maintainers of the project.
 [9]:
   https://img.shields.io/github/languages/top/realazthat/mdremotifier.svg?&cacheSeconds=28800&style=plastic&color=0A1E1E
 [10]:
-  https://github.com/realazthat/mdremotifier/compare/v0.1.0...master
+  https://github.com/realazthat/mdremotifier/compare/v0.2.0...master
 [11]:
   https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=develop&style=plastic
 [12]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.1.0/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/develop?style=plastic
 [13]:
-  https://github.com/realazthat/mdremotifier/compare/v0.1.0...develop
+  https://github.com/realazthat/mdremotifier/compare/v0.2.0...develop
 [14]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
 [15]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.1.0/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/develop?style=plastic
 [16]:
-  https://github.com/realazthat/mdremotifier/compare/v0.1.0...develop
+  https://github.com/realazthat/mdremotifier/compare/v0.2.0...develop
 [17]: https://github.com/realazthat/mdremotifier/tree/master
 [18]: https://github.com/realazthat/mdremotifier/tree/develop
 
