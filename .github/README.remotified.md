@@ -187,7 +187,7 @@ A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat
 ### Tested Platforms
 
 - WSL2 Ubuntu 20.04, Python `3.8.0`.
-- Ubuntu 20.04, Python `3.8.0`, tested in GitHub Actions
+- Ubuntu 20.04, Python `3.8.0, 3.9.0, 3.10.0, 3.11.0, 3.12.0`, tested in GitHub Actions
   workflow ([build-and-test.yml](https://raw.githubusercontent.com/realazthat/mdremotifier/master/.github/workflows/build-and-test.yml)).
 
 ## 🤏 Versioning
