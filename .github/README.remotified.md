@@ -68,7 +68,7 @@ README.md**
 
 </div>
 
-<img src="./.github/demo.gif" alt="Demo" width="100%">
+<img alt="Demo" src="https://raw.githubusercontent.com/realazthat/mdremotifier/master/.github/demo.gif" width="100%"/>
 
 ## ❔ What
 
@@ -143,8 +143,8 @@ A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat
 ## 💻 Command Line Options
 
 <!---->
-<img src="README.help.generated.svg" alt="Output of `python -m mdremotifier.cli --help`" />
-<!---->
+<img alt="Output of `python -m mdremotifier.cli --help`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/master/README.help.generated.svg"/>
+<!-- -->
 
 ## 💡 Examples
 

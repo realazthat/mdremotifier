@@ -21,7 +21,8 @@ import mistletoe
 from bs4 import BeautifulSoup
 from mistletoe.markdown_renderer import (LinkReferenceDefinition,
                                          MarkdownRenderer)
-from mistletoe.span_token import HtmlSpan, Image, InlineCode, Link, SpanToken
+from mistletoe.span_token import (HtmlSpan, Image, InlineCode, Link, RawText,
+                                  SpanToken)
 from mistletoe.token import Token
 from rich.console import Console
 from rich_argparse import RichHelpFormatter
@@ -113,6 +114,18 @@ class _Updater:
       return new_url
     return url
 
+  def _UpdateBS4Image(self, img: BeautifulSoup) -> bool:
+    if 'src' not in img.attrs:
+      return False
+    src0 = img.attrs['src']
+    if not isinstance(src0, str):
+      raise TypeError(f"Expected 'src' to be a string, but got {type(src0)}")
+    new_src = self._ReplaceURL(src0)
+    if new_src == src0:
+      return False
+    img.attrs['src'] = new_src
+    return True
+
   def _UpdateText(self, token: SpanToken):
     """Update the text contents of a span token and its children.
       `InlineCode` tokens are left unchanged."""
@@ -127,21 +140,16 @@ class _Updater:
         self._label2token[token.label] = token
       else:
         token.target = self._ReplaceURL(token.target)
-    elif isinstance(token, HtmlSpan):
-      if token.content.startswith('<img '):
-        # parse the img html
-        img = BeautifulSoup(token.content, 'html.parser')
-        src0 = img['src']
-        if not isinstance(src0, str):
-          raise TypeError(
-              f"Expected 'src' to be a string, but got {type(src0)}")
-        new_src = self._ReplaceURL(src0)
-        if new_src != src0:
-          img['src'] = new_src
-          token.content = str(img)
     elif isinstance(token, (LinkReferenceDefinition)):
       if self._all_references or token.label in self._label2token:
         token.dest = self._ReplaceURL(token.dest)
+    elif isinstance(token, (RawText, HtmlSpan)):
+      soup = BeautifulSoup(token.content, 'html.parser')
+      updated = False
+      for img in soup.find_all('img'):
+        updated |= self._UpdateBS4Image(img)
+      if updated:
+        token.content = str(soup)
     else:
       pass
 

@@ -3,7 +3,8 @@
 set -e -x -v -u -o pipefail
 
 
+
 python -m mdremotifier.cli \
-  -i "mdremotifier/examples/EXAMPLE.md" \
+  -i "mdremotifier/examples/LONG-EXAMPLE.md" \
   --url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  -o "mdremotifier/examples/EXAMPLE.remotified.md"
+  -o "mdremotifier/examples/LONG-EXAMPLE.remotified.md"
