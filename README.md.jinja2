@@ -15,8 +15,6 @@
 
 <div align="center">
 
-<h1>warning _THIS PROJECT IS ALPHA^ALPHA, NOT READY FOR USE</h1>
-
 </div>
 
 <div align="center">
@@ -49,7 +47,7 @@
 ![Top language][9] [![GitHub License][3]][21] [![PyPI - Version][4]][5]
 [![Python Version][8]][5]
 
-**CLI to replace `./image.png` to <raw.githubusercontent.com> remote URL in
+**CLI to replace `./image.png` to `raw.githubusercontent.com` remote URL in
 README.md**
 
 </div>
@@ -201,6 +199,16 @@ Not complete, and not necessarily up to date. Make a PR
 ### Development environment: Linux-like
 
 - For running `pre.sh` (Linux-like environment).
+
+  - From {{path('./.github/dependencies.yml', link='md')}}, which is used for
+    the GH Action to do a fresh install of everything:
+
+    {{shell('python -m yq --yaml-output  \'.dev\' .github/dependencies.yml',
+            include_args=False,
+            backtickify='yaml',
+            indented=4
+    )}}
+
   - Requires `pyenv`, or an exact matching version of python as in
     {{path('.python-version', link='md')}} (which is currently
     `{{ rawsnippet('.python-version') }}`).
@@ -211,9 +219,12 @@ Not complete, and not necessarily up to date. Make a PR
     {{path('./pyproject.toml', link='md')}}.
   - `bash`, `grep`, `awk`, `sed` `xxd`, `git`, `xxhash`, `rsync` (for
     tests/workflows).
-  - Requires nodejs (for act).
-  - Requires Go (to run act).
-  - docker (for act, animation).
+  - act (to run the GH Action locally):
+    - Requires nodejs.
+    - Requires Go.
+    - docker.
+  - Generate animation:
+    - docker
 
 ### Commit Process
 

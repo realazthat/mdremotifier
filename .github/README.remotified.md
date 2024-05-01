@@ -18,8 +18,6 @@ SOURCE: `README.md.jinja2`.
 
 <div align="center">
 
-<h1>warning _THIS PROJECT IS ALPHA^ALPHA, NOT READY FOR USE</h1>
-
 </div>
 
 <div align="center">
@@ -52,7 +50,7 @@ SOURCE: `README.md.jinja2`.
 ![Top language][9] [![GitHub License][3]][21] [![PyPI - Version][4]][5]
 [![Python Version][8]][5]
 
-**CLI to replace `./image.png` to <raw.githubusercontent.com> remote URL in
+**CLI to replace `./image.png` to `raw.githubusercontent.com` remote URL in
 README.md**
 
 </div>
@@ -229,6 +227,25 @@ Not complete, and not necessarily up to date. Make a PR
 ### Development environment: Linux-like
 
 - For running `pre.sh` (Linux-like environment).
+
+  - From [./.github/dependencies.yml](https://raw.githubusercontent.com/realazthat/mdremotifier/master/.github/dependencies.yml), which is used for
+    the GH Action to do a fresh install of everything:
+
+    ```yaml
+    bash: scripts.
+    findutils: scripts.
+    grep: tests.
+    xxd: tests.
+    git: scripts, tests.
+    xxhash: scripts (changeguard).
+    rsync: out-of-directory test.
+    expect: for `unbuffer`, useful to grab and compare ansi color symbols.
+    jq: dependency for [yq](https://github.com/kislyuk/yq), which is used to generate
+      the README; the README generator needs to use `tomlq` (which is a part of `yq`)
+      to query `pyproject.toml`.
+
+    ```
+
   - Requires `pyenv`, or an exact matching version of python as in
     [.python-version](https://raw.githubusercontent.com/realazthat/mdremotifier/master/.python-version) (which is currently
     `3.8.0 `).
@@ -239,9 +256,12 @@ Not complete, and not necessarily up to date. Make a PR
     [./pyproject.toml](https://raw.githubusercontent.com/realazthat/mdremotifier/master/pyproject.toml).
   - `bash`, `grep`, `awk`, `sed` `xxd`, `git`, `xxhash`, `rsync` (for
     tests/workflows).
-  - Requires nodejs (for act).
-  - Requires Go (to run act).
-  - docker (for act, animation).
+  - act (to run the GH Action locally):
+    - Requires nodejs.
+    - Requires Go.
+    - docker.
+  - Generate animation:
+    - docker
 
 ### Commit Process
 
