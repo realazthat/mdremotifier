@@ -2,13 +2,13 @@
 
 ## Link
 
-A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md).
+A link to a local file [LICENSE.md](https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md).
 
 ## Reference link
 
 A link to a local file [LICENSE.md][1]
 
-[1]: https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md
+[1]: https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md
 
 ## Image
 
@@ -18,7 +18,7 @@ A link to a local file [LICENSE.md][1]
 
 ![Reference image][2]
 
-[2]: https://raw.githubusercontent.com/realazthat/mdremotifier/master/.gitub/demo.gif
+[2]: https://github.com/realazthat/mdremotifier/blob/master/.gitub/demo.gif
 
 ## HTML Image tag in text
 

@@ -89,9 +89,10 @@ def _DumpOutput(args: argparse.Namespace, output: str):
 
 class _Updater:
 
-  def __init__(self, url_prefix: str, all_references: bool,
-               console: Console) -> None:
-    self._url_prefix = url_prefix
+  def __init__(self, link_url_prefix: str, img_url_prefix: str,
+               all_references: bool, console: Console) -> None:
+    self._link_url_prefix = link_url_prefix
+    self._img_url_prefix = img_url_prefix
     self._all_references = all_references
     self._console = console
     self._label2token: Dict[str, Token] = {}
@@ -104,12 +105,13 @@ class _Updater:
       return False
     return True
 
-  def _ReplaceURL(self, url: str) -> str:
+  def _ReplaceURL(self, url: str, *, is_img: bool) -> str:
     """Replace the URL with a raw.githubusercontent.com URL if it is a relative
       path to a file in the repository."""
     if self._ShouldReplaceURL(url):
+      url_prefix = (self._img_url_prefix if is_img else self._link_url_prefix)
       # new_url = f'{self._url_prefix}{url_pr.path.lstrip("/")}'
-      new_url = urljoin(self._url_prefix, url)
+      new_url = urljoin(url_prefix, url)
       self._console.print(f'{url} -> {new_url}')
       return new_url
     return url
@@ -120,7 +122,7 @@ class _Updater:
     src0 = img.attrs['src']
     if not isinstance(src0, str):
       raise TypeError(f"Expected 'src' to be a string, but got {type(src0)}")
-    new_src = self._ReplaceURL(src0)
+    new_src = self._ReplaceURL(src0, is_img=True)
     if new_src == src0:
       return False
     img.attrs['src'] = new_src
@@ -134,15 +136,15 @@ class _Updater:
       if token.label is not None:
         self._label2token[token.label] = token
       else:
-        token.src = self._ReplaceURL(token.src)
+        token.src = self._ReplaceURL(token.src, is_img=True)
     elif isinstance(token, Link):
       if token.label is not None:
         self._label2token[token.label] = token
       else:
-        token.target = self._ReplaceURL(token.target)
+        token.target = self._ReplaceURL(token.target, is_img=False)
     elif isinstance(token, (LinkReferenceDefinition)):
       if self._all_references or token.label in self._label2token:
-        token.dest = self._ReplaceURL(token.dest)
+        token.dest = self._ReplaceURL(token.dest, is_img=False)
     elif isinstance(token, (RawText, HtmlSpan)):
       soup = BeautifulSoup(token.content, 'html.parser')
       updated = False
@@ -204,8 +206,16 @@ def main():
         required=True,
         help='URL prefix to replace the local URLs with.'
         ' Should probably end in a slash.'
+        ' Example: "https://github.com/realazthat/mdremotifier/blob/master/".')
+    p.add_argument(
+        '--img-url-prefix',
+        type=str,
+        required=False,
+        default=None,
+        help='URL prefix to replace the local URLs with, specifically for images.'
+        ' Should probably end in a slash.'
         ' Example: "https://raw.githubusercontent.com/realazthat/mdremotifier/master/".'
-    )
+        ' Defaults to the value of --url-prefix.')
     p.add_argument(
         '--all-references',
         action='store',
@@ -219,10 +229,15 @@ def main():
                    help='Show the version and exit.')
 
     args = p.parse_args()
+    url_prefix: str = args.url_prefix
+    img_url_prefix: str = url_prefix
+    if args.img_url_prefix is not None:
+      img_url_prefix = args.img_url_prefix
 
     with MarkdownRenderer() as renderer:
       doc = mistletoe.Document(_GetInput(args))
-      updater = _Updater(url_prefix=args.url_prefix,
+      updater = _Updater(link_url_prefix=url_prefix,
+                         img_url_prefix=img_url_prefix,
                          all_references=args.all_references,
                          console=console)
       updater.Update(doc)

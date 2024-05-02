@@ -6,5 +6,6 @@ set -e -x -v -u -o pipefail
 
 python -m mdremotifier.cli \
   -i "mdremotifier/examples/LONG-EXAMPLE.md" \
-  --url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
   -o "mdremotifier/examples/LONG-EXAMPLE.remotified.md"

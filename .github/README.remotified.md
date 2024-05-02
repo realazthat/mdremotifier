@@ -72,7 +72,7 @@ README.md**
 
 What mdremotifier does:
 
-Turn this ([./mdremotifier/examples/EXAMPLE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/mdremotifier/examples/EXAMPLE.md)):
+Turn this ([./mdremotifier/examples/EXAMPLE.md](https://github.com/realazthat/mdremotifier/blob/master/mdremotifier/examples/EXAMPLE.md)):
 
 <!---->
 ```md
@@ -84,7 +84,7 @@ A link to a local file [LICENSE.md](./LICENSE.md).
 <!---->
 
 Into this
-([./mdremotifier/examples/EXAMPLE.remotified.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/mdremotifier/examples/EXAMPLE.remotified.md)):
+([./mdremotifier/examples/EXAMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/master/mdremotifier/examples/EXAMPLE.remotified.md)):
 
 <!---->
 ```md
@@ -115,7 +115,7 @@ pip install git+https://github.com/realazthat/mdremotifier.git@v0.2.0
 
 ## 🚜 Usage
 
-Example README: ([./mdremotifier/examples/EXAMPLE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/mdremotifier/examples/EXAMPLE.md)):
+Example README: ([./mdremotifier/examples/EXAMPLE.md](https://github.com/realazthat/mdremotifier/blob/master/mdremotifier/examples/EXAMPLE.md)):
 
 <!---->
 ```md
@@ -147,15 +147,15 @@ A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat
 ## 💡 Examples
 
 - mdremotifier's own `README`:
-  - Original: [./README.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/README.md).
-  - Remotified: [./.github/README.remotified.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/.github/README.remotified.md).
-  - Generation script: [./scripts/generate-readme.sh](https://raw.githubusercontent.com/realazthat/mdremotifier/master/scripts/generate-readme.sh).
+  - Original: [./README.md](https://github.com/realazthat/mdremotifier/blob/master/README.md).
+  - Remotified: [./.github/README.remotified.md](https://github.com/realazthat/mdremotifier/blob/master/.github/README.remotified.md).
+  - Generation script: [./scripts/generate-readme.sh](https://github.com/realazthat/mdremotifier/blob/master/scripts/generate-readme.sh).
 - Example:
-  - Original: [./mdremotifier/examples/EXAMPLE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/mdremotifier/examples/EXAMPLE.md).
+  - Original: [./mdremotifier/examples/EXAMPLE.md](https://github.com/realazthat/mdremotifier/blob/master/mdremotifier/examples/EXAMPLE.md).
   - Remotified:
-    [./mdremotifier/examples/EXAMPLE.remotified.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/mdremotifier/examples/EXAMPLE.remotified.md).
+    [./mdremotifier/examples/EXAMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/master/mdremotifier/examples/EXAMPLE.remotified.md).
   - Generation script:
-    [./mdremotifier/examples/example.sh](https://raw.githubusercontent.com/realazthat/mdremotifier/master/mdremotifier/examples/example.sh).
+    [./mdremotifier/examples/example.sh](https://github.com/realazthat/mdremotifier/blob/master/mdremotifier/examples/example.sh).
 
 <!-- TODO: Rebuild this for mdremotifier
 - Projects using mdremotifier:
@@ -186,7 +186,7 @@ A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat
 
 - WSL2 Ubuntu 20.04, Python `3.8.0`.
 - Ubuntu 20.04, Python `3.8.0, 3.9.0, 3.10.0, 3.11.0, 3.12.0`, tested in GitHub Actions
-  workflow ([build-and-test.yml](https://raw.githubusercontent.com/realazthat/mdremotifier/master/.github/workflows/build-and-test.yml)).
+  workflow ([build-and-test.yml](https://github.com/realazthat/mdremotifier/blob/master/.github/workflows/build-and-test.yml)).
 
 ## 🤏 Versioning
 
@@ -196,7 +196,7 @@ repository.
 ## 🔑 License
 
 This project is licensed under the MIT License - see the
-[./LICENSE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md) file for details.
+[./LICENSE.md](https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md) file for details.
 
 ## 🙏 Thanks
 
@@ -228,7 +228,7 @@ Not complete, and not necessarily up to date. Make a PR
 
 - For running `pre.sh` (Linux-like environment).
 
-  - From [./.github/dependencies.yml](https://raw.githubusercontent.com/realazthat/mdremotifier/master/.github/dependencies.yml), which is used for
+  - From [./.github/dependencies.yml](https://github.com/realazthat/mdremotifier/blob/master/.github/dependencies.yml), which is used for
     the GH Action to do a fresh install of everything:
 
     ```yaml
@@ -247,13 +247,13 @@ Not complete, and not necessarily up to date. Make a PR
     ```
 
   - Requires `pyenv`, or an exact matching version of python as in
-    [.python-version](https://raw.githubusercontent.com/realazthat/mdremotifier/master/.python-version) (which is currently
+    [.python-version](https://github.com/realazthat/mdremotifier/blob/master/.python-version) (which is currently
     `3.8.0 `).
   - `jq`, ([installation](https://jqlang.github.io/jq/)) required for
     [yq](https://github.com/kislyuk/yq), which is itself required for our
-    [./README.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/README.md) generation, which uses `tomlq` (from the
+    [./README.md](https://github.com/realazthat/mdremotifier/blob/master/README.md) generation, which uses `tomlq` (from the
     [yq](https://github.com/kislyuk/yq) package) to include version strings from
-    [./pyproject.toml](https://raw.githubusercontent.com/realazthat/mdremotifier/master/pyproject.toml).
+    [./pyproject.toml](https://github.com/realazthat/mdremotifier/blob/master/pyproject.toml).
   - `bash`, `grep`, `awk`, `sed` `xxd`, `git`, `xxhash`, `rsync` (for
     tests/workflows).
   - act (to run the GH Action locally):
@@ -269,7 +269,7 @@ Not complete, and not necessarily up to date. Make a PR
 2. Stage your files: `git add path/to/file.py`.
 3. `bash ./scripts/pre.sh`, this will format, lint, and test the code.
 4. `git status` check if anything changed (generated
-   [./README.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/README.md) for example), if so, `git add` the
+   [./README.md](https://github.com/realazthat/mdremotifier/blob/master/README.md) for example), if so, `git add` the
    changes, and go back to the previous step.
 5. `git commit -m "..."`.
 6. Make a PR to `develop` (or push to develop if you have the rights).
@@ -281,7 +281,7 @@ These instructions are for maintainers of the project.
 1. In the `develop` branch, run `bash ./scripts/pre.sh` to ensure
    everything is in order.
 2. In the `develop` branch, bump the version in
-   [./pyproject.toml](https://raw.githubusercontent.com/realazthat/mdremotifier/master/pyproject.toml), following semantic versioning
+   [./pyproject.toml](https://github.com/realazthat/mdremotifier/blob/master/pyproject.toml), following semantic versioning
    principles. Also modify the `last_unstable_release` and `last_stable_release`
    in the `[tool.mdremotifier-project-metadata]` table as appropriate. Run
    `bash ./scripts/pre.sh` to ensure everything is in order.
@@ -327,8 +327,8 @@ These instructions are for maintainers of the project.
 <!-- Logo from https://lucide.dev/icons/laptop-minimal -->
 
 [20]: https://img.shields.io/badge/Platform-Linux-0A1E1E?style=plastic&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxhcHRvcC1taW5pbWFsIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHg9IjMiIHk9IjQiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIyIiB4Mj0iMjIiIHkxPSIyMCIgeTI9IjIwIi8+PC9zdmc+
-[21]: https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md
-[22]: https://raw.githubusercontent.com/realazthat/mdremotifier/master/.github/logo-exported.svg
+[21]: https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md
+[22]: https://github.com/realazthat/mdremotifier/blob/master/.github/logo-exported.svg
 [23]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-a-permanent-link-to-a-code-snippet
 [24]: https://github.com/zakhenry/embedme
 [25]: https://github.com/electrovir/markdown-code-example-inserter

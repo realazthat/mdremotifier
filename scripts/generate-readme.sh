@@ -27,5 +27,6 @@ python -m snipinator.cli \
 
 python -m mdremotifier.cli \
   -i "${PROJ_PATH}/README.md" \
-  --url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
   -o "${PROJ_PATH}/.github/README.remotified.md"
