@@ -254,8 +254,6 @@ Not complete, and not necessarily up to date. Make a PR
     [./README.md](https://github.com/realazthat/mdremotifier/blob/master/README.md) generation, which uses `tomlq` (from the
     [yq](https://github.com/kislyuk/yq) package) to include version strings from
     [./pyproject.toml](https://github.com/realazthat/mdremotifier/blob/master/pyproject.toml).
-  - `bash`, `grep`, `awk`, `sed` `xxd`, `git`, `xxhash`, `rsync` (for
-    tests/workflows).
   - act (to run the GH Action locally):
     - Requires nodejs.
     - Requires Go.
