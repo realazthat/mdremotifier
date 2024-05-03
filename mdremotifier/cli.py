@@ -13,7 +13,7 @@ import sys
 import warnings
 from pathlib import Path
 from shutil import get_terminal_size
-from typing import Dict, List, Optional
+from typing import List, Optional, Set
 from urllib.parse import ParseResult, urljoin, urlparse
 
 import colorama
@@ -21,7 +21,8 @@ import mistletoe
 from bs4 import BeautifulSoup
 from mistletoe.markdown_renderer import (LinkReferenceDefinition,
                                          MarkdownRenderer)
-from mistletoe.span_token import HtmlSpan, Image, InlineCode, Link, SpanToken
+from mistletoe.span_token import (HtmlSpan, Image, InlineCode, Link, RawText,
+                                  SpanToken)
 from mistletoe.token import Token
 from rich.console import Console
 from rich_argparse import RichHelpFormatter
@@ -88,12 +89,13 @@ def _DumpOutput(args: argparse.Namespace, output: str):
 
 class _Updater:
 
-  def __init__(self, url_prefix: str, all_references: bool,
-               console: Console) -> None:
-    self._url_prefix = url_prefix
+  def __init__(self, link_url_prefix: str, img_url_prefix: str,
+               all_references: bool, console: Console) -> None:
+    self._link_url_prefix = link_url_prefix
+    self._img_url_prefix = img_url_prefix
     self._all_references = all_references
     self._console = console
-    self._label2token: Dict[str, Token] = {}
+    self._seen_labels: Set[str] = set()
 
   def _ShouldReplaceURL(self, url: str) -> bool:
     url_pr: ParseResult = urlparse(url)
@@ -103,15 +105,28 @@ class _Updater:
       return False
     return True
 
-  def _ReplaceURL(self, url: str) -> str:
+  def _ReplaceURL(self, url: str, *, is_img: bool) -> str:
     """Replace the URL with a raw.githubusercontent.com URL if it is a relative
       path to a file in the repository."""
     if self._ShouldReplaceURL(url):
+      url_prefix = (self._img_url_prefix if is_img else self._link_url_prefix)
       # new_url = f'{self._url_prefix}{url_pr.path.lstrip("/")}'
-      new_url = urljoin(self._url_prefix, url)
+      new_url = urljoin(url_prefix, url)
       self._console.print(f'{url} -> {new_url}')
       return new_url
     return url
+
+  def _UpdateBS4Image(self, img: BeautifulSoup) -> bool:
+    if 'src' not in img.attrs:
+      return False
+    src0 = img.attrs['src']
+    if not isinstance(src0, str):
+      raise TypeError(f"Expected 'src' to be a string, but got {type(src0)}")
+    new_src = self._ReplaceURL(src0, is_img=True)
+    if new_src == src0:
+      return False
+    img.attrs['src'] = new_src
+    return True
 
   def _UpdateText(self, token: SpanToken):
     """Update the text contents of a span token and its children.
@@ -119,29 +134,24 @@ class _Updater:
 
     if isinstance(token, Image):
       if token.label is not None:
-        self._label2token[token.label] = token
+        self._seen_labels.add(token.label)
       else:
-        token.src = self._ReplaceURL(token.src)
+        token.src = self._ReplaceURL(token.src, is_img=True)
     elif isinstance(token, Link):
       if token.label is not None:
-        self._label2token[token.label] = token
+        self._seen_labels.add(token.label)
       else:
-        token.target = self._ReplaceURL(token.target)
-    elif isinstance(token, HtmlSpan):
-      if token.content.startswith('<img '):
-        # parse the img html
-        img = BeautifulSoup(token.content, 'html.parser')
-        src0 = img['src']
-        if not isinstance(src0, str):
-          raise TypeError(
-              f"Expected 'src' to be a string, but got {type(src0)}")
-        new_src = self._ReplaceURL(src0)
-        if new_src != src0:
-          img['src'] = new_src
-          token.content = str(img)
+        token.target = self._ReplaceURL(token.target, is_img=False)
     elif isinstance(token, (LinkReferenceDefinition)):
-      if self._all_references or token.label in self._label2token:
-        token.dest = self._ReplaceURL(token.dest)
+      if self._all_references or token.label in self._seen_labels:
+        token.dest = self._ReplaceURL(token.dest, is_img=False)
+    elif isinstance(token, (RawText, HtmlSpan)):
+      soup = BeautifulSoup(token.content, 'html.parser')
+      updated = False
+      for img in soup.find_all('img'):
+        updated |= self._UpdateBS4Image(img)
+      if updated:
+        token.content = str(soup)
     else:
       pass
 
@@ -196,8 +206,16 @@ def main():
         required=True,
         help='URL prefix to replace the local URLs with.'
         ' Should probably end in a slash.'
+        ' Example: "https://github.com/realazthat/mdremotifier/blob/master/".')
+    p.add_argument(
+        '--img-url-prefix',
+        type=str,
+        required=False,
+        default=None,
+        help='URL prefix to replace the local URLs with, specifically for images.'
+        ' Should probably end in a slash.'
         ' Example: "https://raw.githubusercontent.com/realazthat/mdremotifier/master/".'
-    )
+        ' Defaults to the value of --url-prefix.')
     p.add_argument(
         '--all-references',
         action='store',
@@ -211,10 +229,15 @@ def main():
                    help='Show the version and exit.')
 
     args = p.parse_args()
+    url_prefix: str = args.url_prefix
+    img_url_prefix: str = url_prefix
+    if args.img_url_prefix is not None:
+      img_url_prefix = args.img_url_prefix
 
     with MarkdownRenderer() as renderer:
       doc = mistletoe.Document(_GetInput(args))
-      updater = _Updater(url_prefix=args.url_prefix,
+      updater = _Updater(link_url_prefix=url_prefix,
+                         img_url_prefix=img_url_prefix,
                          all_references=args.all_references,
                          console=console)
       updater.Update(doc)
