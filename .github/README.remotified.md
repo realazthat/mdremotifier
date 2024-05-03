@@ -14,7 +14,7 @@ SOURCE: `README.md.jinja2`.
 
 -->
 
-# <div align="center">![mdremotifier][22]</div>
+# <div align="center">![mdremotifier][1]</div>
 
 <div align="center">
 
@@ -25,7 +25,7 @@ SOURCE: `README.md.jinja2`.
 <!-- Icons from https://lucide.dev/icons/users -->
 <!-- Icons from https://lucide.dev/icons/laptop-minimal -->
 
-![**Audience:** Developers][19] ![**Platform:** Linux][20]
+![**Audience:** Developers][2] ![**Platform:** Linux][3]
 
 </div>
 
@@ -47,8 +47,8 @@ SOURCE: `README.md.jinja2`.
 
 <div align="center">
 
-![Top language][9] [![GitHub License][3]][21] [![PyPI - Version][4]][5]
-[![Python Version][8]][5]
+![Top language][4] [![GitHub License][5]][6] [![PyPI - Version][7]][8]
+[![Python Version][9]][8]
 
 **CLI to replace `./image.png` to `raw.githubusercontent.com` remote URL in
 README.md**
@@ -59,10 +59,10 @@ README.md**
 
 <div align="center">
 
-|                   | Status                     | Stable                    | Unstable                  |                    |
-| ----------------- | -------------------------- | ------------------------- | ------------------------- | ------------------ |
-| **[Master][17]**  | [![Build and Test][1]][2]  | [![since tagged][6]][10]  |                           | ![last commit][7]  |
-| **[Develop][18]** | [![Build and Test][11]][2] | [![since tagged][12]][13] | [![since tagged][15]][16] | ![last commit][14] |
+|                   | Status                      | Stable                    | Unstable                  |                    |
+| ----------------- | --------------------------- | ------------------------- | ------------------------- | ------------------ |
+| **[Master][10]**  | [![Build and Test][11]][12] | [![since tagged][13]][14] |                           | ![last commit][15] |
+| **[Develop][16]** | [![Build and Test][17]][12] | [![since tagged][18]][19] | [![since tagged][20]][21] | ![last commit][22] |
 
 </div>
 
@@ -212,15 +212,15 @@ Not complete, and not necessarily up to date. Make a PR
 
 | Project                                           | Stars | Last Update  | Language | Platform | Similarity X Obviousness |
 | ------------------------------------------------- | ----- | ------------ | -------- | -------- | ------------------------ |
-| [bdashore3/remark-github-images][60]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐                    |
-| [laobie/WriteMarkdownLazily][54]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [crh19970307/mdul][55]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][56] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                     |
-| [jen6/imgo][57]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                     |
-| [chocoluffy/lazy-markdown][59]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [loheagn/gopic][61]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                     |
-| [Undertone0809/imarkdown][53]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                      |
-| [ravgeetdhillon/markdown-imgur-upload][58]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                      |
+| [bdashore3/remark-github-images][23]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐                    |
+| [laobie/WriteMarkdownLazily][24]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [crh19970307/mdul][25]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][26] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                     |
+| [jen6/imgo][27]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                     |
+| [chocoluffy/lazy-markdown][28]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [loheagn/gopic][29]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                     |
+| [Undertone0809/imarkdown][30]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                      |
+| [ravgeetdhillon/markdown-imgur-upload][31]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                      |
 
 ## 🫡 Contributions
 
@@ -299,70 +299,34 @@ These instructions are for maintainers of the project.
    `git checkout develop && git merge master`.
 9. Push the develop branch to GitHub: `git push origin develop`.
 
-[1]: https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=master&style=plastic
-[2]: https://github.com/realazthat/mdremotifier/actions/workflows/build-and-test.yml
-[3]: https://img.shields.io/github/license/realazthat/mdremotifier?style=plastic&color=0A1E1E
-[4]: https://img.shields.io/pypi/v/mdremotifier?style=plastic&color=0A1E1E
-[5]: https://pypi.org/project/mdremotifier/
-[6]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/master?style=plastic
-[7]: https://img.shields.io/github/last-commit/realazthat/mdremotifier/master?style=plastic
-[8]: https://img.shields.io/pypi/pyversions/mdremotifier?style=plastic&color=0A1E1E
-[9]: https://img.shields.io/github/languages/top/realazthat/mdremotifier.svg?&cacheSeconds=28800&style=plastic&color=0A1E1E
-[10]: https://github.com/realazthat/mdremotifier/compare/v0.2.0...master
-[11]: https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=develop&style=plastic
-[12]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/develop?style=plastic
-[13]: https://github.com/realazthat/mdremotifier/compare/v0.2.0...develop
-[14]: https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
-[15]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/develop?style=plastic
-[16]: https://github.com/realazthat/mdremotifier/compare/v0.2.0...develop
-[17]: https://github.com/realazthat/mdremotifier/tree/master
-[18]: https://github.com/realazthat/mdremotifier/tree/develop
-
-<!-- Logo from https://lucide.dev/icons/users -->
-
-[19]: https://img.shields.io/badge/Audience-Developers-0A1E1E?style=plastic&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXJzIj48cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIvPjxjaXJjbGUgY3g9IjkiIGN5PSI3IiByPSI0Ii8+PHBhdGggZD0iTTIyIDIxdi0yYTQgNCAwIDAgMC0zLTMuODciLz48cGF0aCBkPSJNMTYgMy4xM2E0IDQgMCAwIDEgMCA3Ljc1Ii8+PC9zdmc+
-
-<!-- Logo from https://lucide.dev/icons/laptop-minimal -->
-
-[20]: https://img.shields.io/badge/Platform-Linux-0A1E1E?style=plastic&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxhcHRvcC1taW5pbWFsIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHg9IjMiIHk9IjQiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIyIiB4Mj0iMjIiIHkxPSIyMCIgeTI9IjIwIi8+PC9zdmc+
-[21]: https://github.com/realazthat/mdremotifier/blob/v0.2.0/LICENSE.md
-[22]: https://github.com/realazthat/mdremotifier/blob/v0.2.0/.github/logo-exported.svg
-[23]: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-a-permanent-link-to-a-code-snippet
-[24]: https://github.com/zakhenry/embedme
-[25]: https://github.com/electrovir/markdown-code-example-inserter
-[26]: https://github.com/dineshsonachalam/markdown-autodocs
-[27]: https://github.com/romnn/embedme
-[28]: https://github.com/drewavis/markdowninclude
-[29]: https://github.com/tokusumi/markdown-embed-code
-[30]: https://github.com/ARMmbed/snippet
-[31]: https://github.com/SimonCropp/MarkdownSnippets
-[32]: https://github.com/shiftkey/scribble
-[33]: https://github.com/shiftkey/scribble/blob/master/docs/features/code-snippets.md
-[34]: https://github.com/JulianCataldo/remark-embed
-[35]: https://github.com/calebpeterson/jest-transformer-test-md
-[36]: https://github.com/ildar-shaimordanov/git-markdown-snippet
-[37]: https://github.com/sammndhr/gridsome-remark-embed-snippet
-[38]: https://gridsome.org/
-[39]: https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-embed-snippet
-[40]: https://github.com/gatsbyjs/gatsby
-[41]: https://github.com/endocode/snippetextractor
-[42]: https://github.com/javierfernandes/markdown-exercises
-[43]: https://github.com/devincornell/pymddoc
-[44]: https://github.com/NativeScript/markdown-snippet-injector
-[45]: https://github.com/polywrap/doc-snippets
-[46]: https://github.com/andersfischernielsen/Simple-Embedded-Markdown-Code-Snippets
-[47]: https://github.com/xrd/oreilly-snippets
-[48]: https://github.com/DamonOehlman/injectcode
-[49]: https://github.com/fuxingloh/remark-code-import-replace
-[50]: https://github.com/teyc/markdown-snippet
-[51]: https://github.com/marc-bouvier-graveyard/baldir_markdown
-[52]: https://github.com/tjstankus/commitate
-[53]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
-[54]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
-[55]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
-[56]: https://github.com/SkyLee424/Go-MarkDown-Image-Transfer-Helper "Upload to Qiniu Cloud"
-[57]: https://github.com/jen6/imgo "Upload to Google Drive"
-[58]: https://github.com/ravgeetdhillon/markdown-imgur-upload "Upload to imgur, a bit annoying because it requires you to put the images into a particular directory"
-[59]: https://github.com/chocoluffy/lazy-markdown "Uploads to LeanCloud, readme is a bit unclear"
-[60]: https://github.com/bdashore3/remark-github-images "Documentation is non-existent, but code looks very similar to mdremotifier"
-[61]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
+[1]: https://github.com/realazthat/mdremotifier/blob/v0.2.0/.github/logo-exported.svg
+[2]: https://img.shields.io/badge/Audience-Developers-0A1E1E?style=plastic&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXJzIj48cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIvPjxjaXJjbGUgY3g9IjkiIGN5PSI3IiByPSI0Ii8+PHBhdGggZD0iTTIyIDIxdi0yYTQgNCAwIDAgMC0zLTMuODciLz48cGF0aCBkPSJNMTYgMy4xM2E0IDQgMCAwIDEgMCA3Ljc1Ii8+PC9zdmc+
+[3]: https://img.shields.io/badge/Platform-Linux-0A1E1E?style=plastic&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxhcHRvcC1taW5pbWFsIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHg9IjMiIHk9IjQiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIyIiB4Mj0iMjIiIHkxPSIyMCIgeTI9IjIwIi8+PC9zdmc+
+[4]: https://img.shields.io/github/languages/top/realazthat/mdremotifier.svg?&cacheSeconds=28800&style=plastic&color=0A1E1E
+[5]: https://img.shields.io/github/license/realazthat/mdremotifier?style=plastic&color=0A1E1E
+[6]: https://github.com/realazthat/mdremotifier/blob/v0.2.0/LICENSE.md
+[7]: https://img.shields.io/pypi/v/mdremotifier?style=plastic&color=0A1E1E
+[8]: https://pypi.org/project/mdremotifier/
+[9]: https://img.shields.io/pypi/pyversions/mdremotifier?style=plastic&color=0A1E1E
+[10]: https://github.com/realazthat/mdremotifier/tree/master
+[11]: https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=master&style=plastic
+[12]: https://github.com/realazthat/mdremotifier/actions/workflows/build-and-test.yml
+[13]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/master?style=plastic
+[14]: https://github.com/realazthat/mdremotifier/compare/v0.2.0...master
+[15]: https://img.shields.io/github/last-commit/realazthat/mdremotifier/master?style=plastic
+[16]: https://github.com/realazthat/mdremotifier/tree/develop
+[17]: https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=develop&style=plastic
+[18]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/develop?style=plastic
+[19]: https://github.com/realazthat/mdremotifier/compare/v0.2.0...develop
+[20]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.2.0/develop?style=plastic
+[21]: https://github.com/realazthat/mdremotifier/compare/v0.2.0...develop
+[22]: https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
+[23]: https://github.com/bdashore3/remark-github-images "Documentation is non-existent, but code looks very similar to mdremotifier"
+[24]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
+[25]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
+[26]: https://github.com/SkyLee424/Go-MarkDown-Image-Transfer-Helper "Upload to Qiniu Cloud"
+[27]: https://github.com/jen6/imgo "Upload to Google Drive"
+[28]: https://github.com/chocoluffy/lazy-markdown "Uploads to LeanCloud, readme is a bit unclear"
+[29]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
+[30]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
+[31]: https://github.com/ravgeetdhillon/markdown-imgur-upload "Upload to imgur, a bit annoying because it requires you to put the images into a particular directory"
