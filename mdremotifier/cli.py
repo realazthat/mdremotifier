@@ -13,7 +13,7 @@ import sys
 import warnings
 from pathlib import Path
 from shutil import get_terminal_size
-from typing import Dict, List, Optional
+from typing import List, Optional, Set
 from urllib.parse import ParseResult, urljoin, urlparse
 
 import colorama
@@ -95,7 +95,7 @@ class _Updater:
     self._img_url_prefix = img_url_prefix
     self._all_references = all_references
     self._console = console
-    self._label2token: Dict[str, Token] = {}
+    self._seen_labels: Set[str] = set()
 
   def _ShouldReplaceURL(self, url: str) -> bool:
     url_pr: ParseResult = urlparse(url)
@@ -134,16 +134,16 @@ class _Updater:
 
     if isinstance(token, Image):
       if token.label is not None:
-        self._label2token[token.label] = token
+        self._seen_labels.add(token.label)
       else:
         token.src = self._ReplaceURL(token.src, is_img=True)
     elif isinstance(token, Link):
       if token.label is not None:
-        self._label2token[token.label] = token
+        self._seen_labels.add(token.label)
       else:
         token.target = self._ReplaceURL(token.target, is_img=False)
     elif isinstance(token, (LinkReferenceDefinition)):
-      if self._all_references or token.label in self._label2token:
+      if self._all_references or token.label in self._seen_labels:
         token.dest = self._ReplaceURL(token.dest, is_img=False)
     elif isinstance(token, (RawText, HtmlSpan)):
       soup = BeautifulSoup(token.content, 'html.parser')
