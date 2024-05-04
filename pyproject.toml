@@ -28,7 +28,8 @@ dependencies = [
   "rich >=13,<14",
   "rich-argparse >=1,<2",
   "soupsieve >=2.0,<3",
-  "types-colorama >=0.4,<1"
+  "types-colorama >=0.4,<1",
+  "typing-extensions >=4,<5"
 ]
 keywords = [
   "github",
