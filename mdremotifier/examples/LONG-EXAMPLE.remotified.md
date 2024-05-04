@@ -18,7 +18,7 @@ A link to a local file [LICENSE.md][1]
 
 ![Reference image][2]
 
-[2]: https://github.com/realazthat/mdremotifier/blob/master/.gitub/demo.gif
+[2]: https://raw.githubusercontent.com/realazthat/mdremotifier/master/.gitub/demo.gif
 
 ## HTML Image tag in text
 

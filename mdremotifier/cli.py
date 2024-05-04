@@ -13,7 +13,7 @@ import sys
 import warnings
 from pathlib import Path
 from shutil import get_terminal_size
-from typing import List, Optional, Set
+from typing import Dict, List, Optional, Set, Tuple, Union
 from urllib.parse import ParseResult, urljoin, urlparse
 
 import colorama
@@ -26,6 +26,7 @@ from mistletoe.span_token import (HtmlSpan, Image, InlineCode, Link, RawText,
 from mistletoe.token import Token
 from rich.console import Console
 from rich_argparse import RichHelpFormatter
+from typing_extensions import Literal
 
 from . import _build_version
 
@@ -96,6 +97,8 @@ class _Updater:
     self._all_references = all_references
     self._console = console
     self._seen_labels: Set[str] = set()
+    self._label2type: Dict[str, Tuple[Literal['img', 'link'],
+                                      Union[Link, Image]]] = {}
 
   def _ShouldReplaceURL(self, url: str) -> bool:
     url_pr: ParseResult = urlparse(url)
@@ -128,23 +131,43 @@ class _Updater:
     img.attrs['src'] = new_src
     return True
 
+  def _SetLabelType(self, *, token: Union[Image, Link], label: str,
+                    link_type: Literal['img', 'link']):
+    self._seen_labels.add(label)
+    if label not in self._label2type:
+      self._label2type[label] = (link_type, token)
+    else:
+      prev_link_type, prev_token = self._label2type[label]
+      if prev_link_type != link_type and self._img_url_prefix != self._link_url_prefix:
+        self._console.print(
+            f'Label "{label}" was previously used as a {prev_link_type}, but now as a {link_type}.'
+        )
+        raise ValueError(
+            f'Label "{label}" was previously used as a {prev_link_type}, but now as a {link_type}.'
+            ' This is not allowed when --img-url-prefix is set to a different value than --url-prefix.'
+            f'\n token: {token}'
+            f'\n prev_token: {prev_token}')
+
   def _UpdateText(self, token: SpanToken):
     """Update the text contents of a span token and its children.
       `InlineCode` tokens are left unchanged."""
 
     if isinstance(token, Image):
       if token.label is not None:
-        self._seen_labels.add(token.label)
+        self._SetLabelType(token=token, label=token.label, link_type='img')
       else:
         token.src = self._ReplaceURL(token.src, is_img=True)
     elif isinstance(token, Link):
       if token.label is not None:
-        self._seen_labels.add(token.label)
+        self._SetLabelType(token=token, label=token.label, link_type='link')
       else:
         token.target = self._ReplaceURL(token.target, is_img=False)
     elif isinstance(token, (LinkReferenceDefinition)):
       if self._all_references or token.label in self._seen_labels:
-        token.dest = self._ReplaceURL(token.dest, is_img=False)
+        prev_link_type, _ = self._label2type.get(token.label, (None, None))
+
+        token.dest = self._ReplaceURL(token.dest,
+                                      is_img=prev_link_type == 'img')
     elif isinstance(token, (RawText, HtmlSpan)):
       soup = BeautifulSoup(token.content, 'html.parser')
       updated = False
