@@ -14,9 +14,13 @@ TOML=${PROJ_PATH}/pyproject.toml EXTRA=dev \
 # find all *.md.jinja2 paths in mdremotifier
 find ./mdremotifier/examples -type f -name "*.md" ! -path '*.remotified.md' -print0 | while IFS= read -r -d '' MARKDOWN_TEMPLATE; do
   MARKDOWN_TEMPLATE=$(realpath "${MARKDOWN_TEMPLATE}")
+  # Don't use mdreftidy on the examples, because they are short, and they
+  # are the way they are intended to be.
   bash scripts/utilities/prettier.sh --parser markdown "${MARKDOWN_TEMPLATE}" --write
 done
 
+python -m mdreftidy.cli "${PWD}/README.md.jinja2" \
+  --renumber --remove-unused --move-to-bottom --sort-ref-blocks --inplace
 bash scripts/utilities/prettier.sh --parser markdown "${PWD}/README.md.jinja2" --write
 bash scripts/utilities/prettier.sh --parser markdown "${PWD}/LICENSE.md" --write
 
