@@ -78,7 +78,13 @@ Turn this ([./mdremotifier/examples/EXAMPLE.md](./mdremotifier/examples/EXAMPLE.
 ```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](./LICENSE.md).
+## Local link
+
+[LICENSE.md](./LICENSE.md).
+
+## Local image
+
+![local image](./img.png).
 
 ```
 <!---->
@@ -90,7 +96,13 @@ Into this
 ```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md).
+## Local link
+
+[LICENSE.md](https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md).
+
+## Local image
+
+![local image](https://raw.githubusercontent.com/realazthat/mdremotifier/master/img.png).
 
 ```
 <!---->
@@ -124,19 +136,43 @@ Example README: ([./mdremotifier/examples/EXAMPLE.md](./mdremotifier/examples/EX
 ```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](./LICENSE.md).
+## Local link
+
+[LICENSE.md](./LICENSE.md).
+
+## Local image
+
+![local image](./img.png).
 
 ```
 <!---->
 
 Generating the README:
 
-<!---->
+<!--
+
+-->
+
 ```bash
-$ python -m mdremotifier.cli -i ./mdremotifier/examples/EXAMPLE.md --url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ -o - 2>/dev/null
+# Using this command:
+python -m mdremotifier.cli \
+  -i "mdremotifier/examples/EXAMPLE.md" \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  -o "mdremotifier/examples/EXAMPLE.remotified.md"
+```
+
+<!---->
+```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md).
+## Local link
+
+[LICENSE.md](https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md).
+
+## Local image
+
+![local image](https://raw.githubusercontent.com/realazthat/mdremotifier/master/img.png).
 
 ```
 <!---->

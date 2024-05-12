@@ -1,3 +1,9 @@
 # Example markdown file
 
-A link to a local file [LICENSE.md](./LICENSE.md).
+## Local link
+
+[LICENSE.md](./LICENSE.md).
+
+## Local image
+
+![local image](./img.png).

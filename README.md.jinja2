@@ -107,7 +107,18 @@ Example README: ({{path('./mdremotifier/examples/EXAMPLE.md', link='md')}}):
 
 Generating the README:
 
-<!--{{ shell('python -m mdremotifier.cli -i ./mdremotifier/examples/EXAMPLE.md --url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ -o - 2>/dev/null', backtickify='bash', decomentify='nl') }}-->
+<!--
+{% set example_cmd=snippet('./mdremotifier/examples/example.sh',
+                          start='# SNIPPET_START',
+                          end='# SNIPPET_END') | trim %}
+-->
+
+```bash
+# Using this command:
+{{ example_cmd }}
+```
+
+<!--{{ rawsnippet('./mdremotifier/examples/EXAMPLE.remotified.md', backtickify='md', decomentify='nl') }}-->
 
 ## 💻 Command Line Options
 
