@@ -195,11 +195,19 @@ python -m mdremotifier.cli \
     [./mdremotifier/examples/EXAMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/EXAMPLE.remotified.md).
   - Generation script:
     [./mdremotifier/examples/example.sh](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/example.sh).
+- Projects using mdremotifier:
+  - [realazthat/snipinator][23].
+    - README: [snipinator/README.md][24].
+    - Generation script: [snipinator/scripts/generate-readme.sh#L29][25].
+    - Remotified: [snipinator/README.md][26].
+  - [github.com/realazthat/excalidraw-brute-export-cli][27].
+    - README: [excalidraw-brute-export-cli/README.md][28].
+    - Generation script:
+      [excalidraw-brute-export-cli/scripts/generate-readme.sh#L65][29].
+    - Remotified: [excalidraw-brute-export-cli/README.md][30].
 
 <!-- TODO: Rebuild this for mdremotifier
-- Projects using mdremotifier:
-  - [realazthat/snipinator](https://github.com/realazthat/snipinator), See
-    [snipinator/README.md.jinja2](https://github.com/realazthat/snipinator/blob/61cb88593baa099dc375cf5fd40679e4be673fc5/README.md.jinja2).
+
   - [github.com/realazthat/changeguard](https://github.com/realazthat/changeguard),
     See
     [changeguard/README.md.jinja2](https://github.com/realazthat/changeguard/blob/87d5104b52e651bb9195a3d46dd7f050acbcb534/README.md.jinja2).
@@ -209,9 +217,6 @@ python -m mdremotifier.cli \
   - [github.com/realazthat/comfylowda](https://github.com/realazthat/comfylowda),
     See
     [comfylowda/README.md.jinja2](https://github.com/realazthat/comfylowda/blob/e01a32c38107aa0b89ccea21c4678d193a186a78/README.md.jinja2).
-  - [github.com/realazthat/excalidraw-brute-export-cli](https://github.com/realazthat/excalidraw-brute-export-cli),
-    See
-    [excalidraw-brute-export-cli/README.md.jinja2](https://github.com/realazthat/excalidraw-brute-export-cli/blob/54a3b5b08b644e61c721ab565c576094234c5cc7/README.md.jinja2).
 -->
 
 ## ✅ Requirements
@@ -251,15 +256,15 @@ Not complete, and not necessarily up to date. Make a PR
 
 | Project                                           | Stars | Last Update  | Language | Platform | Similarity X Obviousness |
 | ------------------------------------------------- | ----- | ------------ | -------- | -------- | ------------------------ |
-| [bdashore3/remark-github-images][23]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐                    |
-| [laobie/WriteMarkdownLazily][24]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [crh19970307/mdul][25]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][26] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                     |
-| [jen6/imgo][27]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                     |
-| [chocoluffy/lazy-markdown][28]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [loheagn/gopic][29]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                     |
-| [Undertone0809/imarkdown][30]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                      |
-| [ravgeetdhillon/markdown-imgur-upload][31]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                      |
+| [bdashore3/remark-github-images][31]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐                    |
+| [laobie/WriteMarkdownLazily][32]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [crh19970307/mdul][33]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][34] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                     |
+| [jen6/imgo][35]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                     |
+| [chocoluffy/lazy-markdown][36]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [loheagn/gopic][37]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                     |
+| [Undertone0809/imarkdown][38]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                      |
+| [ravgeetdhillon/markdown-imgur-upload][39]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                      |
 
 ## 🫡 Contributions
 
@@ -286,7 +291,7 @@ Not complete, and not necessarily up to date. Make a PR
     ```
 
   - Requires `pyenv`, or an exact matching version of python as in
-    [.python-version](https://github.com/realazthat/mdremotifier/blob/v0.3.2/.python-version) (which is currently
+    [./.python-version](https://github.com/realazthat/mdremotifier/blob/v0.3.2/.python-version) (which is currently
     `3.8.0 `).
   - `jq`, ([installation](https://jqlang.github.io/jq/)) required for
     [yq](https://github.com/kislyuk/yq), which is itself required for our
@@ -360,12 +365,20 @@ These instructions are for maintainers of the project.
 [20]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.3.2/develop?style=plastic
 [21]: https://github.com/realazthat/mdremotifier/compare/v0.3.2...develop
 [22]: https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
-[23]: https://github.com/bdashore3/remark-github-images "Documentation is non-existent, but code looks very similar to mdremotifier"
-[24]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
-[25]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
-[26]: https://github.com/SkyLee424/Go-MarkDown-Image-Transfer-Helper "Upload to Qiniu Cloud"
-[27]: https://github.com/jen6/imgo "Upload to Google Drive"
-[28]: https://github.com/chocoluffy/lazy-markdown "Uploads to LeanCloud, readme is a bit unclear"
-[29]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
-[30]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
-[31]: https://github.com/ravgeetdhillon/markdown-imgur-upload "Upload to imgur, a bit annoying because it requires you to put the images into a particular directory"
+[23]: https://github.com/realazthat/snipinator
+[24]: https://github.com/realazthat/snipinator/blob/33c041210031bb1ef0ab9794f8fc56f3a9adb67b/README.md?plain=1
+[25]: https://github.com/realazthat/snipinator/blob/33c041210031bb1ef0ab9794f8fc56f3a9adb67b/scripts/generate-readme.sh#L29
+[26]: https://github.com/realazthat/snipinator/blob/33c041210031bb1ef0ab9794f8fc56f3a9adb67b/.github/README.remotified.md?plain=1
+[27]: https://github.com/realazthat/excalidraw-brute-export-cli
+[28]: https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/README.md?plain=1
+[29]: https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/scripts/generate-readme.sh#L65
+[30]: https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/.github/README.remotified.md?plain=1
+[31]: https://github.com/bdashore3/remark-github-images "Documentation is non-existent, but code looks very similar to mdremotifier"
+[32]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
+[33]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
+[34]: https://github.com/SkyLee424/Go-MarkDown-Image-Transfer-Helper "Upload to Qiniu Cloud"
+[35]: https://github.com/jen6/imgo "Upload to Google Drive"
+[36]: https://github.com/chocoluffy/lazy-markdown "Uploads to LeanCloud, readme is a bit unclear"
+[37]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
+[38]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
+[39]: https://github.com/ravgeetdhillon/markdown-imgur-upload "Upload to imgur, a bit annoying because it requires you to put the images into a particular directory"
