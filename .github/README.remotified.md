@@ -232,6 +232,50 @@ python -m mdremotifier.cli \
 - Ubuntu 20.04, Python `3.8.0, 3.9.0, 3.10.0, 3.11.0, 3.12.0`, tested in GitHub Actions
   workflow ([build-and-test.yml](https://github.com/realazthat/mdremotifier/blob/v0.3.2/.github/workflows/build-and-test.yml)).
 
+## 🐳 Docker Image
+
+Docker images are published to
+[hub.docker.com/r/realazthat/mdremotifier](https://hub.docker.com/r/realazthat/mdremotifier)
+at each tag.
+
+```bash
+# Use the published images at hub.docker.com/r/realazthat/mdremotifier.
+docker run --rm --tty realazthat/mdremotifier:v0.3.2 --help
+
+# /data in the docker image is the working directory, so paths are simpler.
+docker run --rm --tty \
+  -v "${PWD}:/data" \
+  realazthat/mdremotifier:v0.3.2 \
+  --input mdremotifier/examples/EXAMPLE.md \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  --output -
+```
+
+If you want to build the image yourself, you can use the Dockerfile in the
+repository.
+
+<!---->
+```bash
+
+# Build the docker image.
+docker build -t my-mdremotifier-image .
+
+# Print usage.
+docker run --rm --tty my-mdremotifier-image --help
+
+# /data in the docker image is the working directory, so paths are simpler.
+docker run --rm --tty \
+  -v "${PWD}:/data" \
+  my-mdremotifier-image \
+  --input mdremotifier/examples/EXAMPLE.md \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  --output -
+
+```
+<!---->
+
 ## 🤏 Versioning
 
 We use SemVer for versioning. For the versions available, see the tags on this
@@ -304,6 +348,7 @@ Not complete, and not necessarily up to date. Make a PR
     - docker.
   - Generate animation:
     - docker
+  - docker (for building the docker image).
 
 ### Commit Process
 

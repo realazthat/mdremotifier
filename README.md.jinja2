@@ -179,6 +179,35 @@ Generating the README:
 - Ubuntu 20.04, Python `{{tested_python_versions}}`, tested in GitHub Actions
   workflow ([build-and-test.yml](./.github/workflows/build-and-test.yml)).
 
+## 🐳 Docker Image
+
+Docker images are published to
+[hub.docker.com/r/realazthat/{{project_name}}](https://hub.docker.com/r/realazthat/{{project_name}})
+at each tag.
+
+```bash
+# Use the published images at hub.docker.com/r/realazthat/{{project_name}}.
+docker run --rm --tty realazthat/{{project_name}}:v{{last_stable_release}} --help
+
+# /data in the docker image is the working directory, so paths are simpler.
+docker run --rm --tty \
+  -v "${PWD}:/data" \
+  realazthat/{{project_name}}:v{{last_stable_release}} \
+  --input mdremotifier/examples/EXAMPLE.md \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  --output -
+```
+
+If you want to build the image yourself, you can use the Dockerfile in the
+repository.
+
+<!--{{snippet('./mdremotifier/examples/readme-snippets.sh',
+              start='# DOCKER_START',
+              end='# DOCKER_END',
+              backtickify='bash',
+              decomentify='nl')|trim}}-->
+
 ## 🤏 Versioning
 
 We use SemVer for versioning. For the versions available, see the tags on this
@@ -242,6 +271,7 @@ Not complete, and not necessarily up to date. Make a PR
     - docker.
   - Generate animation:
     - docker
+  - docker (for building the docker image).
 
 ### Commit Process
 
