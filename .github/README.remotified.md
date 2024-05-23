@@ -40,8 +40,14 @@ SOURCE: `README.md.jinja2`.
     <a href="#-command-line-options">💻CLI</a>
     &nbsp;&bull;&nbsp;
     <a href="#-examples">💡Examples</a>
-    &nbsp;&bull;&nbsp;
+  </strong>
+</p>
+
+<p align="center">
+  <strong>
     <a href="#-requirements">✅Requirements</a>
+    &nbsp;&bull;&nbsp;
+    <a href="#-docker-image">🐳Docker</a>
   </strong>
 </p>
 
@@ -234,18 +240,17 @@ python -m mdremotifier.cli \
 
 ## 🐳 Docker Image
 
-Docker images are published to
-[hub.docker.com/r/realazthat/mdremotifier](https://hub.docker.com/r/realazthat/mdremotifier)
-at each tag.
+Docker images are published to [ghcr.io/realazthat/mdremotifier][31] at each
+tag.
 
 ```bash
-# Use the published images at hub.docker.com/r/realazthat/mdremotifier.
-docker run --rm --tty realazthat/mdremotifier:v0.3.2 --help
+# Use the published images at https://ghcr.io/realazthat/mdremotifier.
+docker run --rm --tty ghcr.io/realazthat/mdremotifier:v0.3.2 --help
 
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
-  realazthat/mdremotifier:v0.3.2 \
+  ghcr.io/realazthat/mdremotifier:v0.3.2 \
   --input mdremotifier/examples/EXAMPLE.md \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
@@ -300,15 +305,15 @@ Not complete, and not necessarily up to date. Make a PR
 
 | Project                                           | Stars | Last Update  | Language | Platform | Similarity X Obviousness |
 | ------------------------------------------------- | ----- | ------------ | -------- | -------- | ------------------------ |
-| [bdashore3/remark-github-images][31]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐                    |
-| [laobie/WriteMarkdownLazily][32]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [crh19970307/mdul][33]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][34] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                     |
-| [jen6/imgo][35]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                     |
-| [chocoluffy/lazy-markdown][36]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                     |
-| [loheagn/gopic][37]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                     |
-| [Undertone0809/imarkdown][38]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                      |
-| [ravgeetdhillon/markdown-imgur-upload][39]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                      |
+| [bdashore3/remark-github-images][32]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐                    |
+| [laobie/WriteMarkdownLazily][33]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [crh19970307/mdul][34]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][35] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                     |
+| [jen6/imgo][36]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                     |
+| [chocoluffy/lazy-markdown][37]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                     |
+| [loheagn/gopic][38]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                     |
+| [Undertone0809/imarkdown][39]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                      |
+| [ravgeetdhillon/markdown-imgur-upload][40]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                      |
 
 ## 🫡 Contributions
 
@@ -418,12 +423,13 @@ These instructions are for maintainers of the project.
 [28]: https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/README.md?plain=1
 [29]: https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/scripts/generate-readme.sh#L65
 [30]: https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/.github/README.remotified.md?plain=1
-[31]: https://github.com/bdashore3/remark-github-images "Documentation is non-existent, but code looks very similar to mdremotifier"
-[32]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
-[33]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
-[34]: https://github.com/SkyLee424/Go-MarkDown-Image-Transfer-Helper "Upload to Qiniu Cloud"
-[35]: https://github.com/jen6/imgo "Upload to Google Drive"
-[36]: https://github.com/chocoluffy/lazy-markdown "Uploads to LeanCloud, readme is a bit unclear"
-[37]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
-[38]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
-[39]: https://github.com/ravgeetdhillon/markdown-imgur-upload "Upload to imgur, a bit annoying because it requires you to put the images into a particular directory"
+[31]: https://ghcr.io/realazthat/mdremotifier
+[32]: https://github.com/bdashore3/remark-github-images "Documentation is non-existent, but code looks very similar to mdremotifier"
+[33]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
+[34]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
+[35]: https://github.com/SkyLee424/Go-MarkDown-Image-Transfer-Helper "Upload to Qiniu Cloud"
+[36]: https://github.com/jen6/imgo "Upload to Google Drive"
+[37]: https://github.com/chocoluffy/lazy-markdown "Uploads to LeanCloud, readme is a bit unclear"
+[38]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
+[39]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
+[40]: https://github.com/ravgeetdhillon/markdown-imgur-upload "Upload to imgur, a bit annoying because it requires you to put the images into a particular directory"
