@@ -6,7 +6,6 @@ WORKDIR /mdremotifier
 # apt-get -y --no-install-recommends install git=1:2.39.2-1.1 &&
 # apt-get -y upgrade &&
 
-COPY . /mdremotifier
 RUN apt-get -y update && apt-get -y --no-install-recommends install bash && \
   apt-get -y clean && \
   apt-get -y autoremove && \
@@ -16,7 +15,7 @@ RUN apt-get -y update && apt-get -y --no-install-recommends install bash && \
   chown -R nobody:nogroup /mdremotifier /home/nobody/.local && \
   chmod -R a+wrX /mdremotifier
 
-
+COPY . /mdremotifier
 USER nobody
 WORKDIR /mdremotifier
 ENV PATH=/home/nobody/.local/bin:$PATH
