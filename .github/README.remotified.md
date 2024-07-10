@@ -78,7 +78,7 @@ README.md**
 
 What mdremotifier does:
 
-Turn this ([./mdremotifier/examples/EXAMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/EXAMPLE.md)):
+Turn this ([./mdremotifier/examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/SIMPLE.md)):
 
 <!---->
 ```md
@@ -96,7 +96,7 @@ Turn this ([./mdremotifier/examples/EXAMPLE.md](https://github.com/realazthat/md
 <!---->
 
 Into this
-([./mdremotifier/examples/EXAMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/EXAMPLE.remotified.md)):
+([./mdremotifier/examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/SIMPLE.remotified.md)):
 
 <!---->
 ```md
@@ -136,7 +136,7 @@ pip install git+https://github.com/realazthat/mdremotifier.git@v0.3.2
 
 ## 🚜 Usage
 
-Example README: ([./mdremotifier/examples/EXAMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/EXAMPLE.md)):
+Example README: ([./mdremotifier/examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/SIMPLE.md)):
 
 <!---->
 ```md
@@ -161,12 +161,20 @@ Generating the README:
 
 ```bash
 # Using this command:
-python -m mdremotifier.cli \
-  -i "mdremotifier/examples/EXAMPLE.md" \
+# View the template file.
+cat "mdremotifier/examples/SIMPLE.md"
+
+python -m mdremotifier.cli  \
+  -i "mdremotifier/examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  -o "mdremotifier/examples/EXAMPLE.remotified.md"
+  -o "mdremotifier/examples/SIMPLE.remotified.md"
+
+# View the remotified file.
+cat "mdremotifier/examples/SIMPLE.remotified.md"
 ```
+
+Result:
 
 <!---->
 ```md
@@ -183,6 +191,12 @@ python -m mdremotifier.cli \
 ```
 <!---->
 
+Full example:
+
+<!---->
+<img alt="Output of `bash ./snipinator/examples/simple_example.sh`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.3.2/README.simple_example.generated.svg"/>
+<!-- -->
+
 ## 💻 Command Line Options
 
 <!---->
@@ -196,11 +210,11 @@ python -m mdremotifier.cli \
   - Remotified: [./.github/README.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/.github/README.remotified.md).
   - Generation script: [./scripts/generate-readme.sh](https://github.com/realazthat/mdremotifier/blob/v0.3.2/scripts/generate-readme.sh).
 - Example:
-  - Original: [./mdremotifier/examples/EXAMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/EXAMPLE.md).
+  - Original: [./mdremotifier/examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/SIMPLE.md).
   - Remotified:
-    [./mdremotifier/examples/EXAMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/EXAMPLE.remotified.md).
+    [./mdremotifier/examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/SIMPLE.remotified.md).
   - Generation script:
-    [./mdremotifier/examples/example.sh](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/example.sh).
+    [./mdremotifier/examples/simple_example.sh](https://github.com/realazthat/mdremotifier/blob/v0.3.2/mdremotifier/examples/simple_example.sh).
 - Projects using mdremotifier:
   - [realazthat/snipinator][23].
     - README: [snipinator/README.md][24].
@@ -251,7 +265,7 @@ docker run --rm --tty ghcr.io/realazthat/mdremotifier:v0.3.2 --help
 docker run --rm --tty \
   -v "${PWD}:/data" \
   ghcr.io/realazthat/mdremotifier:v0.3.2 \
-  --input mdremotifier/examples/EXAMPLE.md \
+  --input mdremotifier/examples/SIMPLE.md \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
   --output -

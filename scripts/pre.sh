@@ -30,13 +30,18 @@ fi
 
 EXTRA=dev bash scripts/utilities/pin-extra-reqs.sh
 EXTRA=prod bash scripts/utilities/pin-extra-reqs.sh
-bash scripts/run-all-examples.sh
-bash scripts/run-all-tests.sh
-bash scripts/format.sh
-bash scripts/type-check.sh
+
+# Runs in generate.sh.
+# bash scripts/generate-examples.sh
+# Runs in generate.sh.
+# bash scripts/run-all-examples.sh
+# Runs in generate.sh.
+# bash scripts/format.sh
 # Run this manually, because it doesn't output the same exact file every time.
 # bash scripts/generate-animation.sh
-bash scripts/generate-readme.sh
+bash scripts/generate.sh
+bash scripts/run-all-tests.sh
+bash scripts/type-check.sh
 bash scripts/run-wheel-smoke-test.sh
 bash scripts/run-edit-mode-smoke-test.sh
 if [[ -z "${GITHUB_ACTIONS:-}" ]]; then
