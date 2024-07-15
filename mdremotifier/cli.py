@@ -179,12 +179,13 @@ class _Updater:
       pass
 
     if not isinstance(token, InlineCode) and hasattr(token, 'children'):
-      children: List[Token] = token.children  # type: ignore
-      for child in children:
-        if not isinstance(child, SpanToken):
-          logger.error(f'Expected SpanToken, but got {type(child)}')
-          continue
-        self._UpdateText(child)
+      children: Optional[List[Token]] = token.children  # type: ignore
+      if children is not None:
+        for child in children:
+          if not isinstance(child, SpanToken):
+            logger.error(f'Expected SpanToken, but got {type(child)}')
+            continue
+          self._UpdateText(child)
 
   def Update(self, token: Token):
     """Update the text contents of paragraphs and headings within this block,
@@ -196,9 +197,10 @@ class _Updater:
     if not hasattr(token, 'children'):
       return
 
-    children: List[Token] = token.children  # type: ignore
-    for child in children:
-      self.Update(child)
+    children: Optional[List[Token]] = token.children  # type: ignore
+    if children is not None:
+      for child in children:
+        self.Update(child)
 
 
 def main():

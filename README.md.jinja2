@@ -206,26 +206,18 @@ Full example:
 Docker images are published to [ghcr.io/realazthat/{{project_name}}][31] at each
 tag.
 
-```bash
-# Use the published images at https://ghcr.io/realazthat/{{project_name}}.
-docker run --rm --tty ghcr.io/realazthat/{{project_name}}:v{{last_stable_release}} --help
-
-# /data in the docker image is the working directory, so paths are simpler.
-docker run --rm --tty \
-  -v "${PWD}:/data" \
-  ghcr.io/realazthat/{{project_name}}:v{{last_stable_release}} \
-  --input mdremotifier/examples/SIMPLE.md \
-  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
-  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  --output -
-```
+<!--{{snippet('./mdremotifier/examples/remote-docker_example-noautorun.sh',
+              start='# SNIPPET_START',
+              end='# SNIPPET_END',
+              backtickify='bash',
+              decomentify='nl')|trim}}-->
 
 If you want to build the image yourself, you can use the Dockerfile in the
 repository.
 
-<!--{{snippet('./mdremotifier/examples/local-docker-example.sh',
-              start='# DOCKER_START',
-              end='# DOCKER_END',
+<!--{{snippet('./mdremotifier/examples/local-docker_example.sh',
+              start='# SNIPPET_START',
+              end='# SNIPPET_END',
               backtickify='bash',
               decomentify='nl')|trim}}-->
 

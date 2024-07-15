@@ -257,19 +257,28 @@ Full example:
 Docker images are published to [ghcr.io/realazthat/mdremotifier][31] at each
 tag.
 
+<!---->
 ```bash
-# Use the published images at https://ghcr.io/realazthat/mdremotifier.
-docker run --rm --tty ghcr.io/realazthat/mdremotifier:v0.3.2 --help
 
+# View the template file.
+cat "mdremotifier/examples/SIMPLE.md"
+
+# Use the published images at ghcr.io/realazthat/mdremotifier.
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
-  ghcr.io/realazthat/mdremotifier:v0.3.2 \
-  --input mdremotifier/examples/SIMPLE.md \
+  ghcr.io/realazthat/mdremotifier:v0.3.2  \
+  -i "mdremotifier/examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  --output -
+  -o "mdremotifier/examples/SIMPLE.remotified.md"
+
+# View the remotified file.
+cat "mdremotifier/examples/SIMPLE.remotified.md"
+
+
 ```
+<!---->
 
 If you want to build the image yourself, you can use the Dockerfile in the
 repository.
@@ -277,20 +286,23 @@ repository.
 <!---->
 ```bash
 
-# Build the docker image.
 docker build -t my-mdremotifier-image .
 
-# Print usage.
-docker run --rm --tty my-mdremotifier-image --help
+# View the template file.
+cat "mdremotifier/examples/SIMPLE.md"
 
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
-  my-mdremotifier-image \
-  --input mdremotifier/examples/EXAMPLE.md \
+  my-mdremotifier-image  \
+  -i "mdremotifier/examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  --output -
+  -o "mdremotifier/examples/SIMPLE.remotified.md"
+
+# View the remotified file.
+cat "mdremotifier/examples/SIMPLE.remotified.md"
+
 
 ```
 <!---->
