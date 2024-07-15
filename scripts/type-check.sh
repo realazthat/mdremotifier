@@ -11,7 +11,7 @@ TOML=${PROJ_PATH}/pyproject.toml EXTRA=dev \
   TARGET_VENV_PATH="${PWD}/.cache/scripts/.venv" \
   bash "${PROJ_PATH}/scripts/utilities/ensure-reqs.sh"
 
-mypy "${PROJ_PATH}/mdremotifier"
-python3 -m pyright --stats
+python -m mypy "${PROJ_PATH}/mdremotifier" --check-untyped-defs
+python -m pyright --stats
 
 echo -e "${GREEN}All type checks ran successfully${NC}"
