@@ -150,7 +150,7 @@ Documentation = "https://github.com/realazthat/mdremotifier"
 Repository = "https://github.com/realazthat/mdremotifier"
 
 [tool.mdremotifier-project-metadata]
-last_unstable_release = "0.3.2"
+last_release = "0.3.2"
 last_stable_release = "0.3.2"
 
 [tool.setuptools]
