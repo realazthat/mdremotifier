@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mdremotifier"
-version = "0.3.2"
+version = "0.4.0"
 description = "Remotify local links in README.md."
 authors = [{name = "AYF", email = "realazthat@gmail.com"}]
 license = {file = "LICENSE.md"}
@@ -122,7 +122,8 @@ dev = [
   "rich==13.7.1",
   "rich-argparse==1.4.0",
   "secretstorage==3.3.3",
-  "snipinator==1.4.0",
+  "semver==3.0.2",
+  "snipinator==2.2.0",
   "soupsieve==2.5",
   "toml-sort==0.23.1",
   "tomli==2.0.1",
@@ -150,8 +151,8 @@ Documentation = "https://github.com/realazthat/mdremotifier"
 Repository = "https://github.com/realazthat/mdremotifier"
 
 [tool.mdremotifier-project-metadata]
-last_unstable_release = "0.3.2"
-last_stable_release = "0.3.2"
+last_release = "0.4.0"
+last_stable_release = "0.4.0"
 
 [tool.setuptools]
 packages = ["mdremotifier"]

@@ -13,9 +13,18 @@ TOML=${PROJ_PATH}/pyproject.toml EXTRA=dev \
   TARGET_VENV_PATH="${PWD}/.cache/scripts/.venv" \
   bash "${PROJ_PATH}/scripts/utilities/ensure-reqs.sh"
 
-bash scripts/format.sh
+# Runs in generate.sh.
+# bash scripts/format.sh
+# Runs in generate.sh.
+# bash scripts/run-all-examples.sh
 
-bash scripts/run-all-examples.sh
+
+mkdir -p .deleteme
+# Try to make terminal output as consistent as possible.
+TERM=xterm-256color COLUMNS=160 LINES=40 \
+PS4="${GREEN}$ ${NC}" unbuffer bash -x ./mdremotifier/examples/simple_example.sh \
+  > .deleteme/simple_example.output 2>&1
+
 
 python -m snipinator.cli \
   -t "${PROJ_PATH}/README.md.jinja2" \

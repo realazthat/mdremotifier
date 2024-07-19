@@ -5,13 +5,15 @@ set -e -x -v -u -o pipefail
 SCRIPT_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
 source "${SCRIPT_DIR}/utilities/common.sh"
 
+# NOTE: Use dev requirements to generate the README because the README uses
+# shell() with some tools that we only want to install into dev environment.
 VENV_PATH="${PWD}/.cache/scripts/.venv" source "${PROJ_PATH}/scripts/utilities/ensure-venv.sh"
 TOML=${PROJ_PATH}/pyproject.toml EXTRA=dev \
   DEV_VENV_PATH="${PWD}/.cache/scripts/.venv" \
   TARGET_VENV_PATH="${PWD}/.cache/scripts/.venv" \
   bash "${PROJ_PATH}/scripts/utilities/ensure-reqs.sh"
 
-python -m mypy "${PROJ_PATH}/mdremotifier" --check-untyped-defs
-python -m pyright --stats
-
-echo -e "${GREEN}All type checks ran successfully${NC}"
+bash scripts/format.sh
+bash scripts/generate-examples.sh
+bash scripts/run-all-examples.sh
+bash scripts/generate-readme.sh

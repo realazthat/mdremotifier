@@ -40,8 +40,14 @@ SOURCE: `README.md.jinja2`.
     <a href="#-command-line-options">💻CLI</a>
     &nbsp;&bull;&nbsp;
     <a href="#-examples">💡Examples</a>
-    &nbsp;&bull;&nbsp;
+  </strong>
+</p>
+
+<p align="center">
+  <strong>
     <a href="#-requirements">✅Requirements</a>
+    &nbsp;&bull;&nbsp;
+    <a href="#-docker-image">🐳Docker</a>
   </strong>
 </p>
 
@@ -72,25 +78,37 @@ README.md**
 
 What mdremotifier does:
 
-Turn this ([./mdremotifier/examples/EXAMPLE.md](./mdremotifier/examples/EXAMPLE.md)):
+Turn this ([./mdremotifier/examples/SIMPLE.md](./mdremotifier/examples/SIMPLE.md)):
 
 <!---->
 ```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](./LICENSE.md).
+## Local link
+
+[LICENSE.md](./LICENSE.md).
+
+## Local image
+
+![local image](./img.png).
 
 ```
 <!---->
 
 Into this
-([./mdremotifier/examples/EXAMPLE.remotified.md](./mdremotifier/examples/EXAMPLE.remotified.md)):
+([./mdremotifier/examples/SIMPLE.remotified.md](./mdremotifier/examples/SIMPLE.remotified.md)):
 
 <!---->
 ```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md).
+## Local link
+
+[LICENSE.md](https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md).
+
+## Local image
+
+![local image](https://raw.githubusercontent.com/realazthat/mdremotifier/master/img.png).
 
 ```
 <!---->
@@ -113,32 +131,70 @@ not broken.
 pip install mdremotifier
 
 # Install from git (https://github.com/realazthat/mdremotifier)
-pip install git+https://github.com/realazthat/mdremotifier.git@v0.3.2
+pip install git+https://github.com/realazthat/mdremotifier.git@v0.4.0
 ```
 
 ## 🚜 Usage
 
-Example README: ([./mdremotifier/examples/EXAMPLE.md](./mdremotifier/examples/EXAMPLE.md)):
+Example README: ([./mdremotifier/examples/SIMPLE.md](./mdremotifier/examples/SIMPLE.md)):
 
 <!---->
 ```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](./LICENSE.md).
+## Local link
+
+[LICENSE.md](./LICENSE.md).
+
+## Local image
+
+![local image](./img.png).
 
 ```
 <!---->
 
 Generating the README:
 
-<!---->
+<!--
+
+-->
+
 ```bash
-$ python -m mdremotifier.cli -i ./mdremotifier/examples/EXAMPLE.md --url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ -o - 2>/dev/null
+# Using this command:
+# View the template file.
+cat "mdremotifier/examples/SIMPLE.md"
+
+python -m mdremotifier.cli  \
+  -i "mdremotifier/examples/SIMPLE.md" \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  -o "mdremotifier/examples/SIMPLE.remotified.md"
+
+# View the remotified file.
+cat "mdremotifier/examples/SIMPLE.remotified.md"
+```
+
+Result:
+
+<!---->
+```md
 # Example markdown file
 
-A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat/mdremotifier/master/LICENSE.md).
+## Local link
+
+[LICENSE.md](https://github.com/realazthat/mdremotifier/blob/master/LICENSE.md).
+
+## Local image
+
+![local image](https://raw.githubusercontent.com/realazthat/mdremotifier/master/img.png).
 
 ```
+<!---->
+
+Full example:
+
+<!---->
+<img src="README.simple_example.generated.svg" alt="Output of `bash ./snipinator/examples/simple_example.sh`" />
 <!---->
 
 ## 💻 Command Line Options
@@ -154,16 +210,24 @@ A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat
   - Remotified: [./.github/README.remotified.md](./.github/README.remotified.md).
   - Generation script: [./scripts/generate-readme.sh](./scripts/generate-readme.sh).
 - Example:
-  - Original: [./mdremotifier/examples/EXAMPLE.md](./mdremotifier/examples/EXAMPLE.md).
+  - Original: [./mdremotifier/examples/SIMPLE.md](./mdremotifier/examples/SIMPLE.md).
   - Remotified:
-    [./mdremotifier/examples/EXAMPLE.remotified.md](./mdremotifier/examples/EXAMPLE.remotified.md).
+    [./mdremotifier/examples/SIMPLE.remotified.md](./mdremotifier/examples/SIMPLE.remotified.md).
   - Generation script:
-    [./mdremotifier/examples/example.sh](./mdremotifier/examples/example.sh).
+    [./mdremotifier/examples/simple_example.sh](./mdremotifier/examples/simple_example.sh).
+- Projects using mdremotifier:
+  - [realazthat/snipinator][23].
+    - README: [snipinator/README.md][24].
+    - Generation script: [snipinator/scripts/generate-readme.sh#L29][25].
+    - Remotified: [snipinator/README.md][26].
+  - [github.com/realazthat/excalidraw-brute-export-cli][27].
+    - README: [excalidraw-brute-export-cli/README.md][28].
+    - Generation script:
+      [excalidraw-brute-export-cli/scripts/generate-readme.sh#L65][29].
+    - Remotified: [excalidraw-brute-export-cli/README.md][30].
 
 <!-- TODO: Rebuild this for mdremotifier
-- Projects using mdremotifier:
-  - [realazthat/snipinator](https://github.com/realazthat/snipinator), See
-    [snipinator/README.md.jinja2](https://github.com/realazthat/snipinator/blob/61cb88593baa099dc375cf5fd40679e4be673fc5/README.md.jinja2).
+
   - [github.com/realazthat/changeguard](https://github.com/realazthat/changeguard),
     See
     [changeguard/README.md.jinja2](https://github.com/realazthat/changeguard/blob/87d5104b52e651bb9195a3d46dd7f050acbcb534/README.md.jinja2).
@@ -173,9 +237,6 @@ A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat
   - [github.com/realazthat/comfylowda](https://github.com/realazthat/comfylowda),
     See
     [comfylowda/README.md.jinja2](https://github.com/realazthat/comfylowda/blob/e01a32c38107aa0b89ccea21c4678d193a186a78/README.md.jinja2).
-  - [github.com/realazthat/excalidraw-brute-export-cli](https://github.com/realazthat/excalidraw-brute-export-cli),
-    See
-    [excalidraw-brute-export-cli/README.md.jinja2](https://github.com/realazthat/excalidraw-brute-export-cli/blob/54a3b5b08b644e61c721ab565c576094234c5cc7/README.md.jinja2).
 -->
 
 ## ✅ Requirements
@@ -190,6 +251,61 @@ A link to a local file [LICENSE.md](https://raw.githubusercontent.com/realazthat
 - WSL2 Ubuntu 20.04, Python `3.8.0`.
 - Ubuntu 20.04, Python `3.8.0, 3.9.0, 3.10.0, 3.11.0, 3.12.0`, tested in GitHub Actions
   workflow ([build-and-test.yml](./.github/workflows/build-and-test.yml)).
+
+## 🐳 Docker Image
+
+Docker images are published to [ghcr.io/realazthat/mdremotifier][31] at each
+tag.
+
+<!---->
+```bash
+
+# View the template file.
+cat "mdremotifier/examples/SIMPLE.md"
+
+# Use the published images at ghcr.io/realazthat/mdremotifier.
+# /data in the docker image is the working directory, so paths are simpler.
+docker run --rm --tty \
+  -v "${PWD}:/data" \
+  ghcr.io/realazthat/mdremotifier:v0.4.0  \
+  -i "mdremotifier/examples/SIMPLE.md" \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  -o "mdremotifier/examples/SIMPLE.remotified.md"
+
+# View the remotified file.
+cat "mdremotifier/examples/SIMPLE.remotified.md"
+
+
+```
+<!---->
+
+If you want to build the image yourself, you can use the Dockerfile in the
+repository.
+
+<!---->
+```bash
+
+docker build -t my-mdremotifier-image .
+
+# View the template file.
+cat "mdremotifier/examples/SIMPLE.md"
+
+# /data in the docker image is the working directory, so paths are simpler.
+docker run --rm --tty \
+  -v "${PWD}:/data" \
+  my-mdremotifier-image  \
+  -i "mdremotifier/examples/SIMPLE.md" \
+  --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
+  --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
+  -o "mdremotifier/examples/SIMPLE.remotified.md"
+
+# View the remotified file.
+cat "mdremotifier/examples/SIMPLE.remotified.md"
+
+
+```
+<!---->
 
 ## 🤏 Versioning
 
@@ -215,15 +331,15 @@ Not complete, and not necessarily up to date. Make a PR
 
 | Project                                           | Stars | Last Update  | Language | Platform | Similarity X Obviousness |
 | ------------------------------------------------- | ----- | ------------ | -------- | -------- | ------------------------ |
-| [bdashore3/remark-github-images][23]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐               |
-| [laobie/WriteMarkdownLazily][24]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                 |
-| [crh19970307/mdul][25]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                 |
-| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][26] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                 |
-| [jen6/imgo][27]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                 |
-| [chocoluffy/lazy-markdown][28]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                 |
-| [loheagn/gopic][29]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                 |
-| [Undertone0809/imarkdown][30]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                   |
-| [ravgeetdhillon/markdown-imgur-upload][31]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                   |
+| [bdashore3/remark-github-images][32]              | 0     | `2022/12/29` | JS       | CLI      | ⭐⭐⭐⭐⭐               |
+| [laobie/WriteMarkdownLazily][33]                  | 36    | `2024/01/06` | Python   | CLI      | ⭐⭐⭐⭐                 |
+| [crh19970307/mdul][34]                            | 1     | `2020/02/01` | Python   | CLI      | ⭐⭐⭐⭐                 |
+| [SkyLee424/Go-MarkDown-Image-Transfer-Helper][35] | 0     | `2024/03/25` | Go       | CLI      | ⭐⭐⭐⭐                 |
+| [jen6/imgo][36]                                   | 0     | `2020/03/18` | Pyhon    | CLI      | ⭐⭐⭐⭐                 |
+| [chocoluffy/lazy-markdown][37]                    | 0     | `2016/11/20` | Python   | CLI      | ⭐⭐⭐⭐                 |
+| [loheagn/gopic][38]                               | 0     | `2021/11/24` | Go       | CLI      | ⭐⭐⭐⭐                 |
+| [Undertone0809/imarkdown][39]                     | 57    | `2024/01/06` | Python   | Python   | ⭐⭐⭐                   |
+| [ravgeetdhillon/markdown-imgur-upload][40]        | 1     | `2022/03/26` | Python   | CLI      | ⭐⭐⭐                   |
 
 ## 🫡 Contributions
 
@@ -250,7 +366,7 @@ Not complete, and not necessarily up to date. Make a PR
     ```
 
   - Requires `pyenv`, or an exact matching version of python as in
-    [.python-version](.python-version) (which is currently
+    [./.python-version](./.python-version) (which is currently
     `3.8.0
 `).
   - `jq`, ([installation](https://jqlang.github.io/jq/)) required for
@@ -264,6 +380,7 @@ Not complete, and not necessarily up to date. Make a PR
     - docker.
   - Generate animation:
     - docker
+  - docker (for building the docker image).
 
 ### Commit Process
 
@@ -284,8 +401,8 @@ These instructions are for maintainers of the project.
    everything is in order.
 2. In the `develop` branch, bump the version in
    [./pyproject.toml](./pyproject.toml), following semantic versioning
-   principles. Also modify the `last_unstable_release` and `last_stable_release`
-   in the `[tool.mdremotifier-project-metadata]` table as appropriate. Run
+   principles. Also modify the `last_release` and `last_stable_release` in the
+   `[tool.mdremotifier-project-metadata]` table as appropriate. Run
    `bash ./scripts/pre.sh` to ensure everything is in order.
 3. In the `develop` branch, commit these changes with a message like
    `"Prepare release X.Y.Z"`. (See the contributions section
@@ -324,38 +441,53 @@ These instructions are for maintainers of the project.
 [12]:
   https://github.com/realazthat/mdremotifier/actions/workflows/build-and-test.yml
 [13]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.3.2/master?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.4.0/master?style=plastic
 [14]:
-  https://github.com/realazthat/mdremotifier/compare/v0.3.2...master
+  https://github.com/realazthat/mdremotifier/compare/v0.4.0...master
 [15]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/master?style=plastic
 [16]: https://github.com/realazthat/mdremotifier/tree/develop
 [17]:
   https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=develop&style=plastic
 [18]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.3.2/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.4.0/develop?style=plastic
 [19]:
-  https://github.com/realazthat/mdremotifier/compare/v0.3.2...develop
+  https://github.com/realazthat/mdremotifier/compare/v0.4.0...develop
 [20]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.3.2/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.4.0/develop?style=plastic
 [21]:
-  https://github.com/realazthat/mdremotifier/compare/v0.3.2...develop
+  https://github.com/realazthat/mdremotifier/compare/v0.4.0...develop
 [22]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
-[23]:
+[23]: https://github.com/realazthat/snipinator
+[24]:
+  https://github.com/realazthat/snipinator/blob/33c041210031bb1ef0ab9794f8fc56f3a9adb67b/README.md?plain=1
+[25]:
+  https://github.com/realazthat/snipinator/blob/33c041210031bb1ef0ab9794f8fc56f3a9adb67b/scripts/generate-readme.sh#L29
+[26]:
+  https://github.com/realazthat/snipinator/blob/33c041210031bb1ef0ab9794f8fc56f3a9adb67b/.github/README.remotified.md?plain=1
+[27]: https://github.com/realazthat/excalidraw-brute-export-cli
+[28]:
+  https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/README.md?plain=1
+[29]:
+  https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/scripts/generate-readme.sh#L65
+[30]:
+  https://github.com/realazthat/excalidraw-brute-export-cli/blob/8fa2ab033fb62fb0585b77d0966afe1a4b08d682/.github/README.remotified.md?plain=1
+[31]: https://ghcr.io/realazthat/mdremotifier
+[32]:
   https://github.com/bdashore3/remark-github-images
   "Documentation is non-existent, but code looks very similar to mdremotifier"
-[24]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
-[25]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
-[26]:
+[33]: https://github.com/laobie/WriteMarkdownLazily "Uploads to cloud."
+[34]: https://github.com/crh19970307/mdul "Uploads to sm.ms"
+[35]:
   https://github.com/SkyLee424/Go-MarkDown-Image-Transfer-Helper
   "Upload to Qiniu Cloud"
-[27]: https://github.com/jen6/imgo "Upload to Google Drive"
-[28]:
+[36]: https://github.com/jen6/imgo "Upload to Google Drive"
+[37]:
   https://github.com/chocoluffy/lazy-markdown
   "Uploads to LeanCloud, readme is a bit unclear"
-[29]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
-[30]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
-[31]:
+[38]: https://github.com/loheagn/gopic "Upload to cloud, not clear which cloud"
+[39]: https://github.com/Undertone0809/imarkdown "Doesn't yet have a CLI."
+[40]:
   https://github.com/ravgeetdhillon/markdown-imgur-upload
   "Upload to imgur, a bit annoying because it requires you to put the images into a particular directory"
