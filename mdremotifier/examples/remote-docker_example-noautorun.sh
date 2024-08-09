@@ -28,7 +28,7 @@ cat "mdremotifier/examples/SIMPLE.md"
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
-  ghcr.io/realazthat/mdremotifier:v0.3.2  \
+  ghcr.io/realazthat/mdremotifier:v0.4.0  \
   -i "mdremotifier/examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
