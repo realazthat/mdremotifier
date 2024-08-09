@@ -19,9 +19,9 @@ find ./mdremotifier/examples -type f -name "*.md" ! -path '*.remotified.md' -pri
   bash scripts/utilities/prettier.sh --parser markdown "${MARKDOWN_TEMPLATE}" --write
 done
 
-python -m mdreftidy.cli "${PWD}/README.md.jinja2" \
+python -m mdreftidy.cli "${PWD}/.github/README.md.jinja2" \
   --renumber --remove-unused --move-to-bottom --sort-ref-blocks --inplace
-bash scripts/utilities/prettier.sh --parser markdown "${PWD}/README.md.jinja2" --write
+bash scripts/utilities/prettier.sh --parser markdown "${PWD}/.github/README.md.jinja2" --write
 bash scripts/utilities/prettier.sh --parser markdown "${PWD}/LICENSE.md" --write
 
 python -m yapf -r ./mdremotifier -i
