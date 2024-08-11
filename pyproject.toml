@@ -123,7 +123,7 @@ dev = [
   "rich-argparse==1.4.0",
   "secretstorage==3.3.3",
   "semver==3.0.2",
-  "snipinator==2.2.0",
+  "snipinator==3.1.1",
   "soupsieve==2.5",
   "toml-sort==0.23.1",
   "tomli==2.0.1",
