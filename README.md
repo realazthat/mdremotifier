@@ -194,13 +194,13 @@ Result:
 Full example:
 
 <!---->
-<img src="README.simple_example.generated.svg" alt="Output of `bash ./snipinator/examples/simple_example.sh`" />
+<img src=".github/README.simple_example.generated.svg" alt="Output of `bash ./snipinator/examples/simple_example.sh`" />
 <!---->
 
 ## 💻 Command Line Options
 
 <!---->
-<img src="README.help.generated.svg" alt="Output of `python -m mdremotifier.cli --help`" />
+<img src=".github/README.help.generated.svg" alt="Output of `python -m mdremotifier.cli --help`" />
 <!---->
 
 ## 💡 Examples

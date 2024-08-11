@@ -194,13 +194,13 @@ Result:
 Full example:
 
 <!---->
-<img alt="Output of `bash ./snipinator/examples/simple_example.sh`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.4.0/README.simple_example.generated.svg"/>
+<img alt="Output of `bash ./snipinator/examples/simple_example.sh`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.4.0/.github/README.simple_example.generated.svg"/>
 <!-- -->
 
 ## 💻 Command Line Options
 
 <!---->
-<img alt="Output of `python -m mdremotifier.cli --help`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.4.0/README.help.generated.svg"/>
+<img alt="Output of `python -m mdremotifier.cli --help`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.4.0/.github/README.help.generated.svg"/>
 <!-- -->
 
 ## 💡 Examples
