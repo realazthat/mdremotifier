@@ -77,7 +77,7 @@ README.md**
 <img src="./.github/demo.gif" alt="Demo" width="100%">
 
 <div align="center">
-  <img src="./.github/pypi-demo.png" alt="Example result on pypi" width="200">
+  <img src="./.github/pypi-demo.png" alt="Example result on pypi" width="100%">
 </div>
 
 ---

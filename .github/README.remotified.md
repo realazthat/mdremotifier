@@ -77,7 +77,7 @@ README.md**
 <img alt="Demo" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.4.0/.github/demo.gif" width="100%"/>
 
 <div align="center">
-<img alt="Example result on pypi" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.4.0/.github/pypi-demo.png" width="200"/>
+<img alt="Example result on pypi" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.4.0/.github/pypi-demo.png" width="100%"/>
 </div>
 
 ---
