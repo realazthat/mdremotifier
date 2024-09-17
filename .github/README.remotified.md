@@ -86,7 +86,7 @@ README.md**
 
 What mdremotifier does:
 
-Turn this ([./mdremotifier/examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/mdremotifier/examples/SIMPLE.md)):
+Turn this ([./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/examples/SIMPLE.md)):
 
 <!---->
 ```md
@@ -103,8 +103,7 @@ Turn this ([./mdremotifier/examples/SIMPLE.md](https://github.com/realazthat/mdr
 ```
 <!---->
 
-Into this
-([./mdremotifier/examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/mdremotifier/examples/SIMPLE.remotified.md)):
+Into this ([./examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/examples/SIMPLE.remotified.md)):
 
 <!---->
 ```md
@@ -144,7 +143,7 @@ pip install git+https://github.com/realazthat/mdremotifier.git@v0.4.0
 
 ## 🚜 Usage
 
-Example README: ([./mdremotifier/examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/mdremotifier/examples/SIMPLE.md)):
+Example README: ([./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/examples/SIMPLE.md)):
 
 <!---->
 ```md
@@ -170,16 +169,16 @@ Generating the README:
 ```bash
 # Using this command:
 # View the template file.
-cat "mdremotifier/examples/SIMPLE.md"
+cat "examples/SIMPLE.md"
 
 python -m mdremotifier.cli  \
-  -i "mdremotifier/examples/SIMPLE.md" \
+  -i "examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  -o "mdremotifier/examples/SIMPLE.remotified.md"
+  -o "examples/SIMPLE.remotified.md"
 
 # View the remotified file.
-cat "mdremotifier/examples/SIMPLE.remotified.md"
+cat "examples/SIMPLE.remotified.md"
 ```
 
 Result:
@@ -218,11 +217,9 @@ Full example:
   - Remotified: [./.github/README.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/.github/README.remotified.md).
   - Generation script: [./scripts/generate-readme.sh](https://github.com/realazthat/mdremotifier/blob/v0.4.0/scripts/generate-readme.sh).
 - Example:
-  - Original: [./mdremotifier/examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/mdremotifier/examples/SIMPLE.md).
-  - Remotified:
-    [./mdremotifier/examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/mdremotifier/examples/SIMPLE.remotified.md).
-  - Generation script:
-    [./mdremotifier/examples/simple_example.sh](https://github.com/realazthat/mdremotifier/blob/v0.4.0/mdremotifier/examples/simple_example.sh).
+  - Original: [./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/examples/SIMPLE.md).
+  - Remotified: [./examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.4.0/examples/SIMPLE.remotified.md).
+  - Generation script: [./examples/simple_example.sh](https://github.com/realazthat/mdremotifier/blob/v0.4.0/examples/simple_example.sh).
 - Projects using mdremotifier:
   - [realazthat/snipinator][23].
     - README: [snipinator/README.md][24].
@@ -269,20 +266,20 @@ tag.
 ```bash
 
 # View the template file.
-cat "mdremotifier/examples/SIMPLE.md"
+cat "examples/SIMPLE.md"
 
 # Use the published images at ghcr.io/realazthat/mdremotifier.
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
   ghcr.io/realazthat/mdremotifier:v0.4.0  \
-  -i "mdremotifier/examples/SIMPLE.md" \
+  -i "examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  -o "mdremotifier/examples/SIMPLE.remotified.md"
+  -o "examples/SIMPLE.remotified.md"
 
 # View the remotified file.
-cat "mdremotifier/examples/SIMPLE.remotified.md"
+cat "examples/SIMPLE.remotified.md"
 
 
 ```
@@ -297,19 +294,19 @@ repository.
 docker build -t my-mdremotifier-image .
 
 # View the template file.
-cat "mdremotifier/examples/SIMPLE.md"
+cat "examples/SIMPLE.md"
 
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
   my-mdremotifier-image  \
-  -i "mdremotifier/examples/SIMPLE.md" \
+  -i "examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  -o "mdremotifier/examples/SIMPLE.remotified.md"
+  -o "examples/SIMPLE.remotified.md"
 
 # View the remotified file.
-cat "mdremotifier/examples/SIMPLE.remotified.md"
+cat "examples/SIMPLE.remotified.md"
 
 
 ```

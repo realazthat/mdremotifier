@@ -83,14 +83,13 @@ README.md**
 
 What {{project_name_proper}} does:
 
-Turn this ({{ path('./mdremotifier/examples/SIMPLE.md', link='md') }}):
+Turn this ({{ path('./examples/SIMPLE.md', link='md') }}):
 
-<!--{{ rawsnippet('./mdremotifier/examples/SIMPLE.md', backtickify='md', decomentify='nl') }}-->
+<!--{{ rawsnippet('./examples/SIMPLE.md', backtickify='md', decomentify='nl') }}-->
 
-Into this
-({{ path('./mdremotifier/examples/SIMPLE.remotified.md', link='md') }}):
+Into this ({{ path('./examples/SIMPLE.remotified.md', link='md') }}):
 
-<!--{{ rawsnippet('./mdremotifier/examples/SIMPLE.remotified.md', backtickify='md', decomentify='nl') }}-->
+<!--{{ rawsnippet('./examples/SIMPLE.remotified.md', backtickify='md', decomentify='nl') }}-->
 
 This is useful for uploading `README.md` files to third-party sites, like the
 npmjs.com registry, or pypi.org registry, because these registries will break
@@ -115,14 +114,14 @@ pip install git+https://github.com/realazthat/{{project_name}}.git@v{{last_stabl
 
 ## 🚜 Usage
 
-Example README: ({{path('./mdremotifier/examples/SIMPLE.md', link='md')}}):
+Example README: ({{path('./examples/SIMPLE.md', link='md')}}):
 
-<!--{{ rawsnippet('./mdremotifier/examples/SIMPLE.md', backtickify='md', decomentify='nl') }}-->
+<!--{{ rawsnippet('./examples/SIMPLE.md', backtickify='md', decomentify='nl') }}-->
 
 Generating the README:
 
 <!--
-{% set example_cmd=snippet('./mdremotifier/examples/simple_example.sh',
+{% set example_cmd=snippet('./examples/simple_example.sh',
                           start='# SNIPPET_START',
                           end='# SNIPPET_END') | trim %}
 -->
@@ -134,7 +133,7 @@ Generating the README:
 
 Result:
 
-<!--{{ rawsnippet('./mdremotifier/examples/SIMPLE.remotified.md', backtickify='md', decomentify='nl') }}-->
+<!--{{ rawsnippet('./examples/SIMPLE.remotified.md', backtickify='md', decomentify='nl') }}-->
 
 Full example:
 
@@ -167,11 +166,9 @@ Full example:
   - Remotified: {{path('./.github/README.remotified.md', link='md')}}.
   - Generation script: {{path('./scripts/generate-readme.sh', link='md')}}.
 - Example:
-  - Original: {{path('./mdremotifier/examples/SIMPLE.md', link='md')}}.
-  - Remotified:
-    {{path('./mdremotifier/examples/SIMPLE.remotified.md', link='md')}}.
-  - Generation script:
-    {{path('./mdremotifier/examples/simple_example.sh', link='md')}}.
+  - Original: {{path('./examples/SIMPLE.md', link='md')}}.
+  - Remotified: {{path('./examples/SIMPLE.remotified.md', link='md')}}.
+  - Generation script: {{path('./examples/simple_example.sh', link='md')}}.
 - Projects using {{project_name_proper}}:
   - [realazthat/snipinator][23].
     - README: [snipinator/README.md][24].
@@ -214,7 +211,7 @@ Full example:
 Docker images are published to [ghcr.io/realazthat/{{project_name}}][31] at each
 tag.
 
-<!--{{snippet('./mdremotifier/examples/remote-docker_example-noautorun.sh',
+<!--{{snippet('./examples/remote-docker_example-noautorun.sh',
               start='# SNIPPET_START',
               end='# SNIPPET_END',
               backtickify='bash',
@@ -223,7 +220,7 @@ tag.
 If you want to build the image yourself, you can use the Dockerfile in the
 repository.
 
-<!--{{snippet('./mdremotifier/examples/local-docker_example.sh',
+<!--{{snippet('./examples/local-docker_example.sh',
               start='# SNIPPET_START',
               end='# SNIPPET_END',
               backtickify='bash',

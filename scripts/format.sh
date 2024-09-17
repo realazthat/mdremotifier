@@ -12,7 +12,7 @@ TOML=${PROJ_PATH}/pyproject.toml EXTRA=dev \
   bash "${PROJ_PATH}/scripts/utilities/ensure-reqs.sh"
 
 # find all *.md.jinja2 paths in mdremotifier
-find ./mdremotifier/examples -type f -name "*.md" ! -path '*.remotified.md' -print0 | while IFS= read -r -d '' MARKDOWN_TEMPLATE; do
+find ./examples -type f -name "*.md" ! -path '*.remotified.md' -print0 | while IFS= read -r -d '' MARKDOWN_TEMPLATE; do
   MARKDOWN_TEMPLATE=$(realpath "${MARKDOWN_TEMPLATE}")
   # Don't use mdreftidy on the examples, because they are short, and they
   # are the way they are intended to be.
@@ -24,14 +24,14 @@ python -m mdreftidy.cli "${PWD}/.github/README.md.jinja2" \
 bash scripts/utilities/prettier.sh --parser markdown "${PWD}/.github/README.md.jinja2" --write
 bash scripts/utilities/prettier.sh --parser markdown "${PWD}/LICENSE.md" --write
 
-python -m yapf -r ./mdremotifier -i
+python -m yapf -r ./mdremotifier ./examples -i
 python -m yapf -r ./scripts -i
 if toml-sort "${PROJ_PATH}/pyproject.toml" --check; then
   :
 else
   toml-sort --in-place "${PROJ_PATH}/pyproject.toml"
 fi
-python -m autoflake --remove-all-unused-imports --in-place --recursive ./mdremotifier
-isort ./mdremotifier
+python -m autoflake --remove-all-unused-imports --in-place --recursive ./mdremotifier ./examples
+isort ./mdremotifier ./examples
 
 # vulture ./mdremotifier

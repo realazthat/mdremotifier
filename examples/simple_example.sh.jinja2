@@ -45,7 +45,7 @@ docker build -t {{docker_image_name|safe}} .
 {% endif -%}
 
 # View the template file.
-cat "mdremotifier/examples/SIMPLE.md"
+cat "examples/SIMPLE.md"
 
 {% if example_type in ['docker-remote'] -%}
 # Use the published images at ghcr.io/realazthat/mdremotifier.
@@ -54,13 +54,13 @@ cat "mdremotifier/examples/SIMPLE.md"
 # /data in the docker image is the working directory, so paths are simpler.
 {% endif -%}
 {{mdremotifier_cmd|safe}}  \
-  -i "mdremotifier/examples/SIMPLE.md" \
+  -i "examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
-  -o "mdremotifier/examples/SIMPLE.remotified.md"
+  -o "examples/SIMPLE.remotified.md"
 
 # View the remotified file.
-cat "mdremotifier/examples/SIMPLE.remotified.md"
+cat "examples/SIMPLE.remotified.md"
 
 # SNIPPET_END
 : ECHO_SNIPPET_END

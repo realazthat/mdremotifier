@@ -25,37 +25,37 @@ EOF
 )
 
 python -m snipinator.cli \
-  -t "${PROJ_PATH}/mdremotifier/examples/simple_example.sh.jinja2" \
+  -t "${PROJ_PATH}/examples/simple_example.sh.jinja2" \
   --args '{"example_type": "python_module", "module_name": "mdremotifier.cli"}' \
   --warning-header "${CUSTOM_WARNING%.}" \
   --rm \
   --force \
   --create \
-  -o "${PROJ_PATH}/mdremotifier/examples/simple_example.sh" \
+  -o "${PROJ_PATH}/examples/simple_example.sh" \
   --chmod-ro \
   --skip-unchanged
 
 
 python -m snipinator.cli \
-  -t "${PROJ_PATH}/mdremotifier/examples/simple_example.sh.jinja2" \
+  -t "${PROJ_PATH}/examples/simple_example.sh.jinja2" \
   --args '{"example_type": "docker-local", "docker_image_name": "my-mdremotifier-image"}' \
   --warning-header "${CUSTOM_WARNING%.}" \
   --rm \
   --force \
   --create \
-  -o "${PROJ_PATH}/mdremotifier/examples/local-docker_example.sh" \
+  -o "${PROJ_PATH}/examples/local-docker_example.sh" \
   --chmod-ro \
   --skip-unchanged
 
 
 LAST_VERSION=$(tomlq -r -e '.["tool"]["mdremotifier-project-metadata"]["last_stable_release"]' pyproject.toml)
 python -m snipinator.cli \
-  -t "${PROJ_PATH}/mdremotifier/examples/simple_example.sh.jinja2" \
+  -t "${PROJ_PATH}/examples/simple_example.sh.jinja2" \
   --args '{"example_type": "docker-remote", "docker_image_name": "ghcr.io/realazthat/mdremotifier:v'"${LAST_VERSION}"'"}' \
   --warning-header "${CUSTOM_WARNING%.}" \
   --rm \
   --force \
   --create \
-  -o "${PROJ_PATH}/mdremotifier/examples/remote-docker_example-noautorun.sh" \
+  -o "${PROJ_PATH}/examples/remote-docker_example-noautorun.sh" \
   --chmod-ro \
   --skip-unchanged
