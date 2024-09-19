@@ -22,17 +22,18 @@ TOML=${PROJ_PATH}/pyproject.toml EXTRA=dev \
 mkdir -p .deleteme
 # Try to make terminal output as consistent as possible.
 TERM=xterm-256color COLUMNS=160 LINES=40 \
-PS4="${GREEN}$ ${NC}" unbuffer bash -x ./mdremotifier/examples/simple_example.sh \
+PS4="${GREEN}$ ${NC}" unbuffer bash -x ./examples/simple_example.sh \
   > .deleteme/simple_example.output 2>&1
 
 
 python -m snipinator.cli \
-  -t "${PROJ_PATH}/README.md.jinja2" \
+  -t "${PROJ_PATH}/.github/README.md.jinja2" \
   --rm \
   --force \
   --create \
   -o "${PROJ_PATH}/README.md" \
-  --chmod-ro
+  --chmod-ro \
+  --skip-unchanged
 
 LAST_VERSION=$(tomlq -r -e '.["tool"]["mdremotifier-project-metadata"]["last_stable_release"]' pyproject.toml)
 python -m mdremotifier.cli \

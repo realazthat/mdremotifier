@@ -11,8 +11,8 @@ TOML=${PROJ_PATH}/pyproject.toml EXTRA=prod \
   TARGET_VENV_PATH="${PWD}/.venv" \
   bash "${PROJ_PATH}/scripts/utilities/ensure-reqs.sh"
 
-# For each sh in mdremotifier/examples
-find mdremotifier/examples -type f -name "*_example.sh" -print0 | while IFS= read -r -d '' EXAMPLE; do
+# For each sh in examples
+find examples -type f -name "*_example.sh" -print0 | while IFS= read -r -d '' EXAMPLE; do
   bash "${EXAMPLE}"
   echo -e "${GREEN}${EXAMPLE} ran successfully${NC}"
 done
