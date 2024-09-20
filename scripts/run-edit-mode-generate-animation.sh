@@ -27,7 +27,12 @@ trap cleanup EXIT
 
 
 # Copy everything including hidden files, but ignore errors.
-cp -a "${PROJ_PATH}/." "${TMP_DIR}" || true
+rsync -av \
+  --exclude node_modules/ \
+  --exclude '.cache' \
+  --exclude '.git' \
+  --exclude '.venv' \
+  "${PROJ_PATH}/" "${TMP_DIR}/"
 
 # Make everything writable, because `python -m build` copies everything and then
 # deletes it, which is a problem if something is read only.
@@ -59,6 +64,7 @@ python -m mdremotifier.cli --version
 echo -e "${GREEN}Success: mdremotifier smoke test ran successfully${NC}"
 
 mkdir -p .github
+cd ./examples/
 export PS1="${VHS_PS1}"
 vhs "${PROJ_PATH}/.github/demo.tape"
 cp -f .github/demo.gif "${PROJ_PATH}/.github/demo.gif"
