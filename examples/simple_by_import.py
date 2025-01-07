@@ -5,7 +5,6 @@
 # under the MIT license or a compatible open source license. See LICENSE.md for
 # the license text.
 
-
 # SNIPPET_START
 from rich.console import Console
 
