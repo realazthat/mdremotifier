@@ -45,6 +45,8 @@
     <a href="#-requirements">✅Requirements</a>
     &nbsp;&bull;&nbsp;
     <a href="#-docker-image">🐳Docker</a>
+    &nbsp;&bull;&nbsp;
+    <a href="#python-library">🐍Python</a>
   </strong>
 </p>
 
@@ -225,6 +227,24 @@ repository.
               end='# SNIPPET_END',
               backtickify='bash',
               decomentify='nl')|trim}}-->
+
+## Python Library
+
+If you want to use {{project_name_proper}} as a library, you can do so. Here is
+an example:
+
+<!--{{snippet('./examples/simple_by_import.py',
+              start='# SNIPPET_START',
+              end='# SNIPPET_END',
+              backtickify='py',
+              decomentify='nl')|trim}}-->
+
+Here are the API docs:
+
+<!--{{pysignature('./mdremotifier/mdremotifier.py',
+               'Render',
+               backtickify='py',
+               decomentify='nl')|trim}}-->
 
 ## 🤏 Versioning
 

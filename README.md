@@ -48,6 +48,8 @@ SOURCE: `.github/README.md.jinja2`.
     <a href="#-requirements">✅Requirements</a>
     &nbsp;&bull;&nbsp;
     <a href="#-docker-image">🐳Docker</a>
+    &nbsp;&bull;&nbsp;
+    <a href="#python-library">🐍Python</a>
   </strong>
 </p>
 
@@ -308,6 +310,67 @@ docker run --rm --tty \
 # View the remotified file.
 cat "examples/SIMPLE.remotified.md"
 
+
+```
+<!---->
+
+## Python Library
+
+If you want to use mdremotifier as a library, you can do so. Here is
+an example:
+
+<!---->
+```py
+
+from rich.console import Console
+
+from mdremotifier.mdremotifier import Render
+
+md = """
+# Example markdown file
+
+## Local link
+
+[LICENSE.md](./LICENSE.md).
+
+## Local image
+
+![local image](./img.png).
+"""
+url_prefix = 'https://github.com/realazthat/mdremotifier/blob/master/'
+img_url_prefix = 'https://raw.githubusercontent.com/realazthat/mdremotifier/master/'
+
+console = Console()
+print(
+    Render(md=md,
+           url_prefix=url_prefix,
+           img_url_prefix=img_url_prefix,
+           all_references=True,
+           console=console))
+
+
+```
+<!---->
+
+Here are the API docs:
+
+<!---->
+```py
+def Render(*, md: str, url_prefix: str, img_url_prefix: str,
+           all_references: bool, console: Optional[Console]) -> str:
+  """ Render the markdown with the given URL prefixes.
+
+  Args:
+    md: The markdown string to render.
+    url_prefix: The URL prefix to replace the local URLs with.
+      Should probably end in a slash.
+      Example: "https://github.com/realazthat/mdremotifier/blob/master".
+    img_url_prefix: The URL prefix to replace the local URLs with, specifically for images.
+      Should probably end in a slash.
+      Example: "https://raw.githubusercontent.com/realazthat/mdremotifier/master".
+    all_references: Should all references be updated be externalized, or only those that are used by links and images?
+    console: The console to print debug information to.
+  """
 
 ```
 <!---->
