@@ -117,7 +117,7 @@ def main():
     p.add_argument(
         '--all-references',
         action='store_true',
-        default=False,
+        default=True,
         help=
         'Should all references be updated be externalized, or only those that are actually used by links and images?'
     )

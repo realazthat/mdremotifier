@@ -356,20 +356,26 @@ Here are the API docs:
 
 <!---->
 ```py
-def Render(*, md: str, url_prefix: str, img_url_prefix: str,
-           all_references: bool, console: Optional[Console]) -> str:
+def Render(*,
+           md: str,
+           url_prefix: str,
+           img_url_prefix: Optional[str] = None,
+           all_references: bool = False,
+           console: Optional[Console] = None) -> str:
   """ Render the markdown with the given URL prefixes.
 
   Args:
     md: The markdown string to render.
-    url_prefix: The URL prefix to replace the local URLs with.
-      Should probably end in a slash.
+    url_prefix: The URL prefix to replace the local URLs with. Should probably
+      end in a slash.
       Example: "https://github.com/realazthat/mdremotifier/blob/master".
-    img_url_prefix: The URL prefix to replace the local URLs with, specifically for images.
-      Should probably end in a slash.
+    img_url_prefix: The URL prefix to replace the local URLs with, specifically
+      for images. Should probably end in a slash.
       Example: "https://raw.githubusercontent.com/realazthat/mdremotifier/master".
-    all_references: Should all references be updated be externalized, or only those that are used by links and images?
-    console: The console to print debug information to.
+      Defaults to the value of `url_prefix`.
+    all_references: Should all references be updated be externalized, or only
+      those that are used by links and images? Defaults to False.
+    console: The console to print debug information to. Defaults to None.
   """
 
 ```
