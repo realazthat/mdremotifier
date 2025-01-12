@@ -48,6 +48,8 @@ SOURCE: `.github/README.md.jinja2`.
     <a href="#-requirements">✅Requirements</a>
     &nbsp;&bull;&nbsp;
     <a href="#-docker-image">🐳Docker</a>
+    &nbsp;&bull;&nbsp;
+    <a href="#python-library">🐍Python</a>
   </strong>
 </p>
 
@@ -138,7 +140,7 @@ not broken.
 pip install mdremotifier
 
 # Install from git (https://github.com/realazthat/mdremotifier)
-pip install git+https://github.com/realazthat/mdremotifier.git@v0.5.0
+pip install git+https://github.com/realazthat/mdremotifier.git@v1.0.0
 ```
 
 ## 🚜 Usage
@@ -272,7 +274,7 @@ cat "examples/SIMPLE.md"
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
-  ghcr.io/realazthat/mdremotifier:v0.5.0  \
+  ghcr.io/realazthat/mdremotifier:v1.0.0  \
   -i "examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
@@ -308,6 +310,73 @@ docker run --rm --tty \
 # View the remotified file.
 cat "examples/SIMPLE.remotified.md"
 
+
+```
+<!---->
+
+## Python Library
+
+If you want to use mdremotifier as a library, you can do so. Here is
+an example:
+
+<!---->
+```py
+
+from rich.console import Console
+
+from mdremotifier.mdremotifier import Render
+
+md = """
+# Example markdown file
+
+## Local link
+
+[LICENSE.md](./LICENSE.md).
+
+## Local image
+
+![local image](./img.png).
+"""
+url_prefix = 'https://github.com/realazthat/mdremotifier/blob/master/'
+img_url_prefix = 'https://raw.githubusercontent.com/realazthat/mdremotifier/master/'
+
+console = Console()
+print(
+    Render(md=md,
+           url_prefix=url_prefix,
+           img_url_prefix=img_url_prefix,
+           all_references=True,
+           console=console))
+
+
+```
+<!---->
+
+Here are the API docs:
+
+<!---->
+```py
+def Render(*,
+           md: str,
+           url_prefix: str,
+           img_url_prefix: Optional[str] = None,
+           all_references: bool = False,
+           console: Optional[Console] = None) -> str:
+  """ Render the markdown with the given URL prefixes.
+
+  Args:
+    md: The markdown string to render.
+    url_prefix: The URL prefix to replace the local URLs with. Should probably
+      end in a slash.
+      Example: "https://github.com/realazthat/mdremotifier/blob/master".
+    img_url_prefix: The URL prefix to replace the local URLs with, specifically
+      for images. Should probably end in a slash.
+      Example: "https://raw.githubusercontent.com/realazthat/mdremotifier/master".
+      Defaults to the value of `url_prefix`.
+    all_references: Should all references be updated be externalized, or only
+      those that are used by links and images? Defaults to False.
+    console: The console to print debug information to. Defaults to None.
+  """
 
 ```
 <!---->
@@ -446,22 +515,22 @@ These instructions are for maintainers of the project.
 [12]:
   https://github.com/realazthat/mdremotifier/actions/workflows/build-and-test.yml
 [13]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/master?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/master?style=plastic
 [14]:
-  https://github.com/realazthat/mdremotifier/compare/v0.5.0...master
+  https://github.com/realazthat/mdremotifier/compare/v1.0.0...master
 [15]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/master?style=plastic
 [16]: https://github.com/realazthat/mdremotifier/tree/develop
 [17]:
   https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=develop&style=plastic
 [18]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/develop?style=plastic
 [19]:
-  https://github.com/realazthat/mdremotifier/compare/v0.5.0...develop
+  https://github.com/realazthat/mdremotifier/compare/v1.0.0...develop
 [20]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/develop?style=plastic
 [21]:
-  https://github.com/realazthat/mdremotifier/compare/v0.5.0...develop
+  https://github.com/realazthat/mdremotifier/compare/v1.0.0...develop
 [22]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
 [23]: https://github.com/realazthat/snipinator
