@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mdremotifier"
-version = "0.5.0"
+version = "1.0.0"
 description = "Remotify local links in README.md; Make markdown READMEs self contained for publication to sites other than GH, such as npm, pypi."
 authors = [{name = "AYF", email = "realazthat@gmail.com"}]
 license = {file = "LICENSE.md"}
@@ -152,8 +152,8 @@ Documentation = "https://github.com/realazthat/mdremotifier"
 Repository = "https://github.com/realazthat/mdremotifier"
 
 [tool.mdremotifier-project-metadata]
-last_release = "0.5.0"
-last_stable_release = "0.5.0"
+last_release = "1.0.0"
+last_stable_release = "1.0.0"
 
 [tool.setuptools]
 packages = ["mdremotifier"]

@@ -140,7 +140,7 @@ not broken.
 pip install mdremotifier
 
 # Install from git (https://github.com/realazthat/mdremotifier)
-pip install git+https://github.com/realazthat/mdremotifier.git@v0.5.0
+pip install git+https://github.com/realazthat/mdremotifier.git@v1.0.0
 ```
 
 ## 🚜 Usage
@@ -274,7 +274,7 @@ cat "examples/SIMPLE.md"
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
-  ghcr.io/realazthat/mdremotifier:v0.5.0  \
+  ghcr.io/realazthat/mdremotifier:v1.0.0  \
   -i "examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
@@ -515,22 +515,22 @@ These instructions are for maintainers of the project.
 [12]:
   https://github.com/realazthat/mdremotifier/actions/workflows/build-and-test.yml
 [13]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/master?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/master?style=plastic
 [14]:
-  https://github.com/realazthat/mdremotifier/compare/v0.5.0...master
+  https://github.com/realazthat/mdremotifier/compare/v1.0.0...master
 [15]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/master?style=plastic
 [16]: https://github.com/realazthat/mdremotifier/tree/develop
 [17]:
   https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=develop&style=plastic
 [18]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/develop?style=plastic
 [19]:
-  https://github.com/realazthat/mdremotifier/compare/v0.5.0...develop
+  https://github.com/realazthat/mdremotifier/compare/v1.0.0...develop
 [20]:
-  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/develop?style=plastic
+  https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/develop?style=plastic
 [21]:
-  https://github.com/realazthat/mdremotifier/compare/v0.5.0...develop
+  https://github.com/realazthat/mdremotifier/compare/v1.0.0...develop
 [22]:
   https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
 [23]: https://github.com/realazthat/snipinator

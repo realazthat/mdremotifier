@@ -76,10 +76,10 @@ README.md**
 
 ---
 
-<img alt="Demo" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.5.0/.github/demo.gif" width="100%"/>
+<img alt="Demo" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v1.0.0/.github/demo.gif" width="100%"/>
 
 <div align="center">
-<img alt="Example result on pypi" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.5.0/.github/pypi-demo.png" width="100%"/>
+<img alt="Example result on pypi" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v1.0.0/.github/pypi-demo.png" width="100%"/>
 </div>
 
 ---
@@ -88,7 +88,7 @@ README.md**
 
 What mdremotifier does:
 
-Turn this ([./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/examples/SIMPLE.md)):
+Turn this ([./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/examples/SIMPLE.md)):
 
 <!---->
 ```md
@@ -105,7 +105,7 @@ Turn this ([./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blo
 ```
 <!---->
 
-Into this ([./examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/examples/SIMPLE.remotified.md)):
+Into this ([./examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/examples/SIMPLE.remotified.md)):
 
 <!---->
 ```md
@@ -140,12 +140,12 @@ not broken.
 pip install mdremotifier
 
 # Install from git (https://github.com/realazthat/mdremotifier)
-pip install git+https://github.com/realazthat/mdremotifier.git@v0.5.0
+pip install git+https://github.com/realazthat/mdremotifier.git@v1.0.0
 ```
 
 ## 🚜 Usage
 
-Example README: ([./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/examples/SIMPLE.md)):
+Example README: ([./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/examples/SIMPLE.md)):
 
 <!---->
 ```md
@@ -203,25 +203,25 @@ Result:
 Full example:
 
 <!---->
-<img alt="Output of `bash ./snipinator/examples/simple_example.sh`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.5.0/.github/README.simple_example.generated.svg"/>
+<img alt="Output of `bash ./snipinator/examples/simple_example.sh`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v1.0.0/.github/README.simple_example.generated.svg"/>
 <!-- -->
 
 ## 💻 Command Line Options
 
 <!---->
-<img alt="Output of `python -m mdremotifier.cli --help`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v0.5.0/.github/README.help.generated.svg"/>
+<img alt="Output of `python -m mdremotifier.cli --help`" src="https://raw.githubusercontent.com/realazthat/mdremotifier/v1.0.0/.github/README.help.generated.svg"/>
 <!-- -->
 
 ## 💡 Examples
 
 - mdremotifier's own `README`:
-  - Original: [./README.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/README.md).
-  - Remotified: [./.github/README.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/.github/README.remotified.md).
-  - Generation script: [./scripts/generate-readme.sh](https://github.com/realazthat/mdremotifier/blob/v0.5.0/scripts/generate-readme.sh).
+  - Original: [./README.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/README.md).
+  - Remotified: [./.github/README.remotified.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/.github/README.remotified.md).
+  - Generation script: [./scripts/generate-readme.sh](https://github.com/realazthat/mdremotifier/blob/v1.0.0/scripts/generate-readme.sh).
 - Example:
-  - Original: [./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/examples/SIMPLE.md).
-  - Remotified: [./examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/examples/SIMPLE.remotified.md).
-  - Generation script: [./examples/simple_example.sh](https://github.com/realazthat/mdremotifier/blob/v0.5.0/examples/simple_example.sh).
+  - Original: [./examples/SIMPLE.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/examples/SIMPLE.md).
+  - Remotified: [./examples/SIMPLE.remotified.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/examples/SIMPLE.remotified.md).
+  - Generation script: [./examples/simple_example.sh](https://github.com/realazthat/mdremotifier/blob/v1.0.0/examples/simple_example.sh).
 - Projects using mdremotifier:
   - [realazthat/snipinator][23].
     - README: [snipinator/README.md][24].
@@ -257,7 +257,7 @@ Full example:
 
 - WSL2 Ubuntu 20.04, Python `3.8.0`.
 - Ubuntu 20.04, Python `3.8.0, 3.9.0, 3.10.0, 3.11.0, 3.12.0`, tested in GitHub Actions
-  workflow ([build-and-test.yml](https://github.com/realazthat/mdremotifier/blob/v0.5.0/.github/workflows/build-and-test.yml)).
+  workflow ([build-and-test.yml](https://github.com/realazthat/mdremotifier/blob/v1.0.0/.github/workflows/build-and-test.yml)).
 
 ## 🐳 Docker Image
 
@@ -274,7 +274,7 @@ cat "examples/SIMPLE.md"
 # /data in the docker image is the working directory, so paths are simpler.
 docker run --rm --tty \
   -v "${PWD}:/data" \
-  ghcr.io/realazthat/mdremotifier:v0.5.0  \
+  ghcr.io/realazthat/mdremotifier:v1.0.0  \
   -i "examples/SIMPLE.md" \
   --url-prefix https://github.com/realazthat/mdremotifier/blob/master/ \
   --img-url-prefix https://raw.githubusercontent.com/realazthat/mdremotifier/master/ \
@@ -389,7 +389,7 @@ repository.
 ## 🔑 License
 
 This project is licensed under the MIT License - see the
-[./LICENSE.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/LICENSE.md) file for details.
+[./LICENSE.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/LICENSE.md) file for details.
 
 ## 🙏 Thanks
 
@@ -421,7 +421,7 @@ Not complete, and not necessarily up to date. Make a PR
 
 - For running `pre.sh` (Linux-like environment).
 
-  - From [./.github/dependencies.yml](https://github.com/realazthat/mdremotifier/blob/v0.5.0/.github/dependencies.yml), which is used for
+  - From [./.github/dependencies.yml](https://github.com/realazthat/mdremotifier/blob/v1.0.0/.github/dependencies.yml), which is used for
     the GH Action to do a fresh install of everything:
 
     ```yaml
@@ -440,13 +440,13 @@ Not complete, and not necessarily up to date. Make a PR
     ```
 
   - Requires `pyenv`, or an exact matching version of python as in
-    [./.python-version](https://github.com/realazthat/mdremotifier/blob/v0.5.0/.python-version) (which is currently
+    [./.python-version](https://github.com/realazthat/mdremotifier/blob/v1.0.0/.python-version) (which is currently
     `3.8.0 `).
   - `jq`, ([installation](https://jqlang.github.io/jq/)) required for
     [yq](https://github.com/kislyuk/yq), which is itself required for our
-    [./README.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/README.md) generation, which uses `tomlq` (from the
+    [./README.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/README.md) generation, which uses `tomlq` (from the
     [yq](https://github.com/kislyuk/yq) package) to include version strings from
-    [./pyproject.toml](https://github.com/realazthat/mdremotifier/blob/v0.5.0/pyproject.toml).
+    [./pyproject.toml](https://github.com/realazthat/mdremotifier/blob/v1.0.0/pyproject.toml).
   - act (to run the GH Action locally):
     - Requires nodejs.
     - Requires Go.
@@ -461,7 +461,7 @@ Not complete, and not necessarily up to date. Make a PR
 2. Stage your files: `git add path/to/file.py`.
 3. `bash ./scripts/pre.sh`, this will format, lint, and test the code.
 4. `git status` check if anything changed (generated
-   [./README.md](https://github.com/realazthat/mdremotifier/blob/v0.5.0/README.md) for example), if so, `git add` the
+   [./README.md](https://github.com/realazthat/mdremotifier/blob/v1.0.0/README.md) for example), if so, `git add` the
    changes, and go back to the previous step.
 5. `git commit -m "..."`.
 6. Make a PR to `develop` (or push to develop if you have the rights).
@@ -473,7 +473,7 @@ These instructions are for maintainers of the project.
 1. In the `develop` branch, run `bash ./scripts/pre.sh` to ensure
    everything is in order.
 2. In the `develop` branch, bump the version in
-   [./pyproject.toml](https://github.com/realazthat/mdremotifier/blob/v0.5.0/pyproject.toml), following semantic versioning
+   [./pyproject.toml](https://github.com/realazthat/mdremotifier/blob/v1.0.0/pyproject.toml), following semantic versioning
    principles. Also modify the `last_release` and `last_stable_release` in the
    `[tool.mdremotifier-project-metadata]` table as appropriate. Run
    `bash ./scripts/pre.sh` to ensure everything is in order.
@@ -493,27 +493,27 @@ These instructions are for maintainers of the project.
    `git checkout develop && git merge master`.
 9. Push the develop branch to GitHub: `git push origin develop`.
 
-[1]: https://raw.githubusercontent.com/realazthat/mdremotifier/v0.5.0/.github/logo-exported.svg
+[1]: https://raw.githubusercontent.com/realazthat/mdremotifier/v1.0.0/.github/logo-exported.svg
 [2]: https://img.shields.io/badge/Audience-Developers-0A1E1E?style=plastic&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXJzIj48cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIvPjxjaXJjbGUgY3g9IjkiIGN5PSI3IiByPSI0Ii8+PHBhdGggZD0iTTIyIDIxdi0yYTQgNCAwIDAgMC0zLTMuODciLz48cGF0aCBkPSJNMTYgMy4xM2E0IDQgMCAwIDEgMCA3Ljc1Ii8+PC9zdmc+
 [3]: https://img.shields.io/badge/Platform-Linux-0A1E1E?style=plastic&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxhcHRvcC1taW5pbWFsIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHg9IjMiIHk9IjQiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIyIiB4Mj0iMjIiIHkxPSIyMCIgeTI9IjIwIi8+PC9zdmc+
 [4]: https://img.shields.io/github/languages/top/realazthat/mdremotifier.svg?&cacheSeconds=28800&style=plastic&color=0A1E1E
 [5]: https://img.shields.io/github/license/realazthat/mdremotifier?style=plastic&color=0A1E1E
-[6]: https://github.com/realazthat/mdremotifier/blob/v0.5.0/LICENSE.md
+[6]: https://github.com/realazthat/mdremotifier/blob/v1.0.0/LICENSE.md
 [7]: https://img.shields.io/pypi/v/mdremotifier?style=plastic&color=0A1E1E
 [8]: https://pypi.org/project/mdremotifier/
 [9]: https://img.shields.io/pypi/pyversions/mdremotifier?style=plastic&color=0A1E1E
 [10]: https://github.com/realazthat/mdremotifier/tree/master
 [11]: https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=master&style=plastic
 [12]: https://github.com/realazthat/mdremotifier/actions/workflows/build-and-test.yml
-[13]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/master?style=plastic
-[14]: https://github.com/realazthat/mdremotifier/compare/v0.5.0...master
+[13]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/master?style=plastic
+[14]: https://github.com/realazthat/mdremotifier/compare/v1.0.0...master
 [15]: https://img.shields.io/github/last-commit/realazthat/mdremotifier/master?style=plastic
 [16]: https://github.com/realazthat/mdremotifier/tree/develop
 [17]: https://img.shields.io/github/actions/workflow/status/realazthat/mdremotifier/build-and-test.yml?branch=develop&style=plastic
-[18]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/develop?style=plastic
-[19]: https://github.com/realazthat/mdremotifier/compare/v0.5.0...develop
-[20]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v0.5.0/develop?style=plastic
-[21]: https://github.com/realazthat/mdremotifier/compare/v0.5.0...develop
+[18]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/develop?style=plastic
+[19]: https://github.com/realazthat/mdremotifier/compare/v1.0.0...develop
+[20]: https://img.shields.io/github/commits-since/realazthat/mdremotifier/v1.0.0/develop?style=plastic
+[21]: https://github.com/realazthat/mdremotifier/compare/v1.0.0...develop
 [22]: https://img.shields.io/github/last-commit/realazthat/mdremotifier/develop?style=plastic
 [23]: https://github.com/realazthat/snipinator
 [24]: https://github.com/realazthat/snipinator/blob/33c041210031bb1ef0ab9794f8fc56f3a9adb67b/README.md?plain=1
